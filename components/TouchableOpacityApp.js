@@ -24,13 +24,14 @@ export default class TouchableOpacityApp extends React.Component {
 const styles = StyleSheet.create({
     button: {
         height: 40,
-        width: '50%',
+        width: '80%',
         backgroundColor: '#8e1616',
         justifyContent:'center',
         alignItems: 'center'
     },
     font: {
-        fontSize: 20,
+        fontSize: 15,
+        fontWeight: 'bold',
         color: '#fff',
         textShadowColor: 'rgba(0, 0, 0, .3)',
         textShadowOffset: {width: 0.4, height: 1},

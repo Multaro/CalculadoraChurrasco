@@ -21,6 +21,7 @@ export default class TextApp extends React.Component {
 const styles = StyleSheet.create({
     font: {
         fontSize: 20,
+        fontWeight: 'bold',
         color: '#8e1616',
         //fontFamily: 'AnonymousPro-Regular',
         textShadowColor: 'rgba(0, 0, 0, .3)',
