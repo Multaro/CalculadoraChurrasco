@@ -1,66 +1,38 @@
 import React from 'react';
-import { 
-    StyleSheet,
+import {
     View,
+    StyleSheet,
     ImageBackground,
-    TextInput
 } from 'react-native';
 
 import TextApp from './components/TextApp';
 import TouchableOpacityApp from './components/TouchableOpacityApp';
 
-export default class App extends React.Component {
+export default class TypesAndNum extends React.Component {
     state = {
-        cont: 0,
-        barbecue_name: ''
+        text: '',
     };
 
-    handleButton = () => {
-        const { cont } = this.state;
-        const previousCont = cont;
-        alert(`Teste state ${previousCont}`);
-
-        this.setState({ cont: previousCont + 1 });
-    };
-
-    handleBarbecueName = text => {
-        const { barbecue_name } = this.state;
-        if (barbecue_name.length == 14) text = `${text} ...`;
-        if (barbecue_name.length > 15) return;
-
-        text = text.toUpperCase();
-        this.setState({ barbecue_name : text });
-    }
 
     render() {
-        const { barbecue_name } = this.state;
-
         return(
             <ImageBackground
                 source={require('./assets/background-image.jpg')}
                 style={styles.imageContainer}
                 imageStyle={styles.image}
             >
-
-                <View style={styles.background}>
-                    <View style={styles.container}>
-                        <TextApp text='DÊ UM NOME AO SEU CHURRASCO:'/>
-                        <TextInput
-                            style={styles.input}
-                            placeholder='Ex: churras em casa'
-                            underlineColorAndroid='black'
-                            onChangeText={this.handleBarbecueName}
-                        />
+                <View styles={styles.background}>
+                    <View styles={styles.container}>
+                        <TextApp text='QUANTAS PESSOAS VÃO AO CHURRA?' />
                     </View>
 
-                    <View style={styles.footer_container}>
+                    <View styles={styles.footer_container}>
                         <TouchableOpacityApp
-                            text={`CRIAR ${barbecue_name}`}
-                            onPress={this.handleButton}
+                            text='PRÓXIMO ->'
+                            onPress={() => console.log('Debbuger')}
                         />
                     </View>
-                 </View>
-
+                </View>
             </ImageBackground>
         );
     }
@@ -105,6 +77,7 @@ const styles = StyleSheet.create({
     footer_container: {
         flex: .1,
         alignItems: 'center',
-        justifyContent: 'flex-end'   
+        justifyContent: 'flex-end'
     }
+
 });
