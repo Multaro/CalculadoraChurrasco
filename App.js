@@ -12,7 +12,7 @@ import TouchableOpacityApp from './components/TouchableOpacityApp';
 export default class App extends React.Component {
     state = {
         cont: 0,
-        text: ''
+        barbecue_name: ''
     };
 
     handleButton = () => {
@@ -23,17 +23,17 @@ export default class App extends React.Component {
         this.setState({ cont: previousCont + 1 });
     };
 
-    handleText = name => {
-        const { text } = this.state;
-        if (text.length == 14) name = `${text} ...`;
-        if (text.length > 15) return;
+    handleBarbecueName = text => {
+        const { barbecue_name } = this.state;
+        if (barbecue_name.length == 14) text = `${text} ...`;
+        if (barbecue_name.length > 15) return;
 
-        name = name.toUpperCase();
-        this.setState({ text : name });
+        text = text.toUpperCase();
+        this.setState({ barbecue_name : text });
     }
 
     render() {
-        const { text } = this.state;
+        const { barbecue_name } = this.state;
 
         return(
             <ImageBackground
@@ -48,11 +48,11 @@ export default class App extends React.Component {
                         style={styles.input}
                         placeholder='Ex: churras em casa'
                         underlineColorAndroid='black'
-                        onChangeText={this.handleText}
+                        onChangeText={this.handleBarbecueName}
                     />
 
                     <TouchableOpacityApp
-                        text={`CRIAR ${text}`}
+                        text={`CRIAR ${barbecue_name}`}
                         onPress={this.handleButton}
                     />
                  </View>
