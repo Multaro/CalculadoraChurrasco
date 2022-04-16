@@ -9,7 +9,8 @@ import {
 import TextApp from '../components/TextApp';
 import TouchableOpacityApp from '../components/TouchableOpacityApp';
 
-import colors from'../utils/colors';
+import colors from '../utils/colors';
+import images from '../utils/images';
 
 export default class App extends React.Component {
     state = {
@@ -39,20 +40,22 @@ export default class App extends React.Component {
 
         return(
             <ImageBackground
-                source={require('../assets/background-image.jpg')}
+                source={images.background}
                 style={styles.imageContainer}
                 imageStyle={styles.image}
             >
 
                 <View style={styles.background}>
                     <View style={styles.containerSection}>
-                        <TextApp text='DÊ UM NOME AO SEU CHURRASCO:'/>
+                        <TextApp text='Primeiro dê um nome ao seu churrasco:'/>
                         <TextInput
                             style={styles.input}
                             placeholder='Ex: churras em casa'
                             underlineColorAndroid='black'
                             onChangeText={this.handleBarbecueName}
                         />
+
+                        <TextApp text='Qual será a data?' />
                     </View>
 
                     <View style={styles.footerSection}>

@@ -7,6 +7,7 @@ import {
 
 import TextApp from '../components/TextApp';
 import TouchableOpacityApp from '../components/TouchableOpacityApp';
+import PersonTypes from '../components/PersonTypes';
 
 import colors from '../utils/colors';
 
@@ -25,6 +26,12 @@ export default class BarbecuePersons extends React.Component {
                 <View styles={styles.background}>
                     <View styles={styles.containerSection}>
                         <TextApp text='QUANTAS PESSOAS VÃO AO CHURRA?' />
+
+                        <View style={styles.personSection}>
+                            <PersonTypes text='HOMENS' />
+                            <PersonTypes text='MULHERES' />
+                            <PersonTypes text='CRIANÇAS' />
+                        </View>
                     </View>
 
                     <View styles={styles.footerSection}>
@@ -69,11 +76,16 @@ const styles = StyleSheet.create({
         width: '50%',
         textAlign: 'center',
     },
+    personSection: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
     containerSection: {
         //marginTop: 60,
         flex: 1,
         justifyContent: 'space-evenly',
-        alignItems: 'center'
+        justifyContent: 'center'
     },
     footerSection: {
         flex: .1,
