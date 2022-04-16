@@ -5,19 +5,15 @@ import {
     Text
 } from 'react-native';
 
-export default class TouchableOpacityApp extends React.Component {
-    render() {
-        const { text, onPress } = this.props;
-
-        return(
-            <TouchableOpacity 
-                style={styles.button}
-                onPress={onPress}
-            >
-                <Text style={styles.font}>{text}</Text>
-            </TouchableOpacity>
-        );
-    }
+export default function TouchableOpacityApp({ text, onPress }) {
+    return(
+        <TouchableOpacity 
+            style={styles.button}
+            onPress={onPress}
+        >
+            <Text style={styles.font}>{text}</Text>
+        </TouchableOpacity>
+    );
 }
 
 const styles = StyleSheet.create({

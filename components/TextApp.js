@@ -4,18 +4,10 @@ import {
     Text,
 } from 'react-native';
 
-export default class TextApp extends React.Component {
-    state = {
-
-    };
-
-    render() {
-        const { text } = this.props;
-
-        return(
-            <Text style={styles.font}>{text}</Text>
-        );
-    }
+export default function TextApp ({text}) {
+    return(
+        <Text style={styles.font}>{text}</Text>
+    );
 }
 
 const styles = StyleSheet.create({
