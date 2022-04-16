@@ -5,28 +5,29 @@ import {
     ImageBackground,
 } from 'react-native';
 
-import TextApp from './components/TextApp';
-import TouchableOpacityApp from './components/TouchableOpacityApp';
+import TextApp from '../components/TextApp';
+import TouchableOpacityApp from '../components/TouchableOpacityApp';
 
-export default class TypesAndNum extends React.Component {
+import colors from '../utils/colors';
+
+export default class BarbecuePersons extends React.Component {
     state = {
         text: '',
     };
 
-
     render() {
         return(
             <ImageBackground
-                source={require('./assets/background-image.jpg')}
+                source={require('../assets/background-image.jpg')}
                 style={styles.imageContainer}
                 imageStyle={styles.image}
             >
                 <View styles={styles.background}>
-                    <View styles={styles.container}>
+                    <View styles={styles.containerSection}>
                         <TextApp text='QUANTAS PESSOAS VÃO AO CHURRA?' />
                     </View>
 
-                    <View styles={styles.footer_container}>
+                    <View styles={styles.footerSection}>
                         <TouchableOpacityApp
                             text='PRÓXIMO ->'
                             onPress={() => console.log('Debbuger')}
@@ -45,8 +46,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRightWidth: 2,
         borderLeftWidth: 2,
-        borderRightColor: '#8e1616',
-        borderLeftColor: '#8e1616'
+        borderRightColor: colors.red,
+        borderLeftColor: colors.red
 
     },
     // Container tamanho da screen
@@ -68,13 +69,13 @@ const styles = StyleSheet.create({
         width: '50%',
         textAlign: 'center',
     },
-    container: {
+    containerSection: {
         //marginTop: 60,
         flex: 1,
         justifyContent: 'space-evenly',
         alignItems: 'center'
     },
-    footer_container: {
+    footerSection: {
         flex: .1,
         alignItems: 'center',
         justifyContent: 'flex-end'
