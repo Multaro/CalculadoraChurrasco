@@ -7,11 +7,17 @@ import {
 } from 'react-native';
 
 import colors from '../utils/colors';
+import PropTypes from 'prop-types';
 
 export default class SelectedButton extends React.Component {
     state = {
         selected: true
     }
+
+    static propTypes = {
+        text: PropTypes.string.isRequired,
+        onPress: PropTypes.func.isRequired
+    };
     
     handleSelected = () => {
         const { selected } = this.state;

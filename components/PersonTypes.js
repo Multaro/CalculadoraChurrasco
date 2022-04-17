@@ -11,6 +11,7 @@ import TextApp from './TextApp';
 
 import colors from '../utils/colors';
 import images from '../utils/images';
+import PropTypes from 'prop-types';
 
 export default function PersonTypes({type, onSum, onSub, count}) {
     return (
@@ -39,6 +40,16 @@ export default function PersonTypes({type, onSum, onSub, count}) {
     );
 }
 
+PersonTypes.propTypes = {
+    type: PropTypes.string,
+    onSum: PropTypes.func.isRequired,
+    onSub: PropTypes.func.isRequired,
+    count: PropTypes.number.isRequired
+};
+
+PersonTypes.defaultProps = {
+    type: ''
+};
 
 const styles = StyleSheet.create({
     container: {

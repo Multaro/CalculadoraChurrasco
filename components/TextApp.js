@@ -4,11 +4,17 @@ import {
     Text,
 } from 'react-native';
 
+import PropTypes from 'prop-types';
+
 export default function TextApp ({text}) {
     return(
         <Text style={styles.font}>{text}</Text>
     );
 }
+
+TextApp.propTypes = {
+    text: PropTypes.string.isRequired
+};
 
 const styles = StyleSheet.create({
     font: {
