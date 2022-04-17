@@ -15,22 +15,28 @@ export default class SelectedButton extends React.Component {
     }
 
     static propTypes = {
-        text: PropTypes.string.isRequired,
-        onPress: PropTypes.func.isRequired
+        text: PropTypes.string.isRequired
     };
     
-    handleSelected = () => {
+    handleSelected = meats => {
         const { selected } = this.state;
         if (selected) {
-            this.setState({ selected: false });
+            this.setState({ selected: false }, () => {
+                // MANIPULAR O OBJETO DOS
+                // ALIMENTOS AQUI
+                // ADCIONAR ALIMENTOS
+                console.log(meats);
+            });
             return;
         }
-
-        this.setState({ selected: true });
+        this.setState({ selected: true }, () => {
+            // RETIRAR ALIMENTOS
+            console.log(meats);
+        });
     };
 
     render() {
-        const { text, onPress } = this.props;
+        const { text } = this.props;
         const { selected } = this.state;
 
         return (
@@ -38,8 +44,7 @@ export default class SelectedButton extends React.Component {
                 {selected && (
                      <TouchableOpacity 
                          style={styles.container} 
-                         onPress={onPress}
-                         onPressOut={this.handleSelected}
+                         onPress={() => this.handleSelected(text)}
                      >
                         <Text style={styles.font}>{text}</Text>
                     </TouchableOpacity>
@@ -48,7 +53,7 @@ export default class SelectedButton extends React.Component {
                 {!selected && (
                     <TouchableOpacity 
                         style={[styles.container, {backgroundColor: colors.red}]}
-                        onPress={this.handleSelected}
+                        onPress={() => this.handleSelected(text)}
                     >
                         <Text style={styles.fontSelected}>{text}</Text>
                     </TouchableOpacity>
@@ -60,18 +65,18 @@ export default class SelectedButton extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        width: '33%',
         borderWidth: 1,
         borderColor: 'silver',
         padding: 10
     },
     font: {
+        textAlign: 'center',
         fontSize: 20,
         color: colors.red,
     },
     fontSelected: {
+        textAlign: 'center',
         fontSize: 20,
-        color: '#fff',
-        fontWeight: 'bold'
+        color: '#fff'
     }
 });

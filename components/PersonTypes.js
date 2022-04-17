@@ -26,7 +26,7 @@ export default function PersonTypes({type, onSum, onSub, count}) {
                 </View>
             </TouchableOpacity>
                     
-            <TextApp text={count} />
+            <TextApp text={`${count}`} />
 
             <TouchableOpacity 
                 style={styles.buttonSection}
