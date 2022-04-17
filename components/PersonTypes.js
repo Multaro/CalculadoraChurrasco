@@ -13,9 +13,10 @@ import colors from '../utils/colors';
 import images from '../utils/images';
 import PropTypes from 'prop-types';
 
-export default function PersonTypes({type, onSum, onSub, count}) {
+export default function PersonTypes({type, onSum, onSub, count, typeIcon}) {
     return (
         <View style={styles.container}>
+            <Image source={typeIcon} />
             <TextApp text={type} />
             <TouchableOpacity 
                 style={styles.buttonSection}
@@ -44,11 +45,13 @@ PersonTypes.propTypes = {
     type: PropTypes.string,
     onSum: PropTypes.func.isRequired,
     onSub: PropTypes.func.isRequired,
-    count: PropTypes.number.isRequired
+    count: PropTypes.number.isRequired,
+    typeIcon: PropTypes.any
 };
 
 PersonTypes.defaultProps = {
-    type: ''
+    type: '',
+    typeIcon: ''
 };
 
 const styles = StyleSheet.create({
