@@ -20,11 +20,9 @@ export default class MeatsAndVegetables extends React.Component {
         vegetables: false,
     }
 
-    handleSelectedButton = () => {
-        console.log('Debbug');
-    };
-
     render() {
+        const { selected } = this.state;
+
         return (
             <ImageBackground 
                 source={images.background}
@@ -33,7 +31,22 @@ export default class MeatsAndVegetables extends React.Component {
             >
                 <View style={styles.background} onPress={this.handleSelectedButton}>
                     <TextApp text='QUAIS CARNES E VEGETARIANOS SERÃO SERVIDOS?'/>
-                    <SelectedButton onPress={this.handleSelectedButton} text='Alcatra' />
+                    <View style={
+                        {
+                            justifyContent: 'space-between',
+                            flex: 1
+
+                        }}
+                    >
+                        <SelectedButton text='Alcatra' />
+                        <SelectedButton text='Contra Filé' />
+                        <SelectedButton text='Costela Bovina' />
+                        <SelectedButton text='Filé Mignon' />
+                        <SelectedButton text='Fraldinha' />
+                        <SelectedButton text='Maminha' />
+                        <SelectedButton text='Picanha' />
+                    </View>
+
                 </View>
 
             </ImageBackground>
