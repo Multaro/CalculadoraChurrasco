@@ -153,7 +153,7 @@ export default class BarbecuePersons extends React.Component {
                         </View>
                     </View>
 
-                    <View styles={styles.footerSection}>
+                    <View style={styles.footerSection}>
                         <TouchableOpacityApp
                             text='PRÓXIMO ->'
                             onPress={() => console.log('Debbuger')}
@@ -176,12 +176,12 @@ const styles = StyleSheet.create({
         borderLeftColor: colors.red
 
     },
-    // Container tamanho da screen
     imageContainer: {
         flex: 1,
         backgroundColor: 'rgba(1, 1, 1, .1)',
         paddingHorizontal: 20,
     },
+    // Container tamanho da screen
     image: {
         // Imagem tamanho da screen
         flex: 1,
@@ -204,12 +204,12 @@ const styles = StyleSheet.create({
         //marginTop: 60,
         flex: 1,
         justifyContent: 'space-evenly',
-        justifyContent: 'center'
+        alignItems: 'center'
     },
     footerSection: {
         flex: .1,
         alignItems: 'center',
-        justifyContent: 'flex-end'
+        justifyContent: 'center'
     }
 
 });
