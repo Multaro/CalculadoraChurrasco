@@ -4,6 +4,7 @@ import {
     StyleSheet,
     Text,
     ImageBackground,
+    Image
 } from 'react-native';
 
 import TextApp from '../components/TextApp';
@@ -106,7 +107,8 @@ export default class BarbecuePersons extends React.Component {
             >
                 <View style={styles.background}>
                     <View style={styles.containerSection}>
-                        <TextApp text='QUANTAS PESSOAS VÃO AO CHURRA?' />
+                        <Image source={images.reunionIcon}/>
+                        <TextApp text='QUANTAS PESSOAS VÃO AO CHURRAS?' />
 
                         <View style={styles.personSection}>
                             <PersonTypes 
@@ -114,18 +116,21 @@ export default class BarbecuePersons extends React.Component {
                                 onSum={this.handleSumButtonMens}
                                 onSub={this.handleSubButtonMens}
                                 count={countMens}
+                                typeIcon={images.mensIcon}
                             />
                             <PersonTypes 
                                 type='MULHERES'
                                 onSum={this.handleSumButtonWomens}
                                 onSub={this.handleSubButtonWomens}
                                 count={countWomens}
+                                typeIcon={images.womansIcon}
                             />
                             <PersonTypes 
                                 type='CRIANÇAS'
                                 onSum={this.handleSumButtonChilds}
                                 onSub={this.handleSubButtonChilds}
                                 count={countChilds}
+                                typeIcon={images.ChildsIcon}
                             />
                         </View>
                         <View 
@@ -198,7 +203,8 @@ const styles = StyleSheet.create({
     personSection: {
         flex: 1,
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: '10%'
     },
     containerSection: {
         //marginTop: 60,
