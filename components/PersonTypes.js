@@ -12,58 +12,33 @@ import TextApp from './TextApp';
 import colors from '../utils/colors';
 import images from '../utils/images';
 
-export default class PersonTypes extends React.Component {
-    state = {
-        count: 0
-    };
+export default function PersonTypes({type, onSum, onSub, count}) {
+    return (
+        <View style={styles.container}>
+            <TextApp text={type} />
+            <TouchableOpacity 
+                style={styles.buttonSection}
+                onPress={onSum}
+            >
+                <View style={styles.button}>
+                    <Text style={styles.text}>^</Text>
+                </View>
+            </TouchableOpacity>
+                    
+            <TextApp text={count} />
 
-    handleSumButton = () => {
-        const { count } = this.state;
-        const prevCount = count + 1;
-        this.setState({count: prevCount});
-
-    };
-
-    handleSubButton = () => {
-        const { count } = this.state;
-        const prevCount = count - 1;
-
-        if (prevCount < 0) return;
-        
-        this.setState({count: prevCount});
-    };
-
-    render() {
-        const { count } = this.state;
-        const { type } = this.props;
-
-        return (
-            <View style={styles.container}>
-                <TextApp text={type} />
-                      <View style={styles.buttonSection}>
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={this.handleSumButton}
-                        >
-                            <Text style={styles.text}>^</Text>
-                        </TouchableOpacity>
-                    </View>
-                        
-                        <TextApp text={count} />
-
-                    <View style={styles.buttonSection}>
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={this.handleSubButton}
-                        >
-                            <Text style={styles.text}>^</Text>
-                        </TouchableOpacity>
-
-                    </View>
-            </View>
-        );
-    }
+            <TouchableOpacity 
+                style={styles.buttonSection}
+                onPress={onSub}
+            >
+                <View style={styles.button}>
+                    <Text style={styles.text}>^</Text>
+                </View>
+            </TouchableOpacity>
+        </View>
+    );
 }
+
 
 const styles = StyleSheet.create({
     container: {
