@@ -51,7 +51,7 @@ PersonTypes.propTypes = {
 
 PersonTypes.defaultProps = {
     type: '',
-    typeIcon: ''
+    typeIcon: 0
 };
 
 const styles = StyleSheet.create({

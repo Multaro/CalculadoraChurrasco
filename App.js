@@ -5,5 +5,5 @@ import BarbecuePersons from './screens/BarbecuePersons';
 import MeatsAndVegetables from './screens/MeatsAndVegetables';
 
 export default function App() {
-    return <BarbecuePersons />;
+    return <MeatsAndVegetables />;
 }
