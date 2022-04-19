@@ -11,10 +11,10 @@ const valores = {
         children: 0,
         vegs: 0
     },
-    carnes: [
+    meats: [
         {
             label: '',
-            tipo: '',
+            type: '',
         }
     ],
     acompanhamentos: [

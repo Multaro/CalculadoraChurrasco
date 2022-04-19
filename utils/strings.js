@@ -2,6 +2,7 @@ export default {
     meats: {
         title: 'QUAIS CARNES E VEGETAIS SERÃO SERVIDOS?',
         beef: {
+            key: 'beef',
             description: 'CARNE BOVINA',
             types: [
                 'Alcatra',
@@ -14,6 +15,7 @@ export default {
             ]
         },
         pig: {
+            key: 'pig',
             description: 'CARNE SUÍNA',
             types: [
                 'Alcatra',
@@ -24,6 +26,7 @@ export default {
             ]
         },
         sheep: {
+            key: 'sheep',
             description: 'CARNE OVINA',
             types: [
                 'Carré',
@@ -33,6 +36,7 @@ export default {
             ]
         },
         chicken: {
+            key: 'chicken',
             description: 'CARNE DE FRANGO',
             types: [
                 'Coração',
@@ -44,6 +48,7 @@ export default {
             ]
         },
         vegetables: {
+            key: 'vegetables',
             description: 'VEGETAIS',
             types: [
                 'Abobrinha',
