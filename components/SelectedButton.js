@@ -7,41 +7,78 @@ import {
 } from 'react-native';
 
 import colors from '../utils/colors';
+import data from '../utils/data';
 import PropTypes from 'prop-types';
 
 export default class SelectedButton extends React.Component {
     state = {
-        selected: true
+        selected: this.props.selected
     }
 
     static propTypes = {
-        text: PropTypes.string.isRequired
+        text: PropTypes.string.isRequired,
+        meatType: PropTypes.string.isRequired
     };
+
+    addFood(food) {
+        const { meats } = data;
+        const { meatType } = this.props;
+
+        for (const meat in meats) {
+            if (Object.hasOwnProperty.call(meats, meat)) {
+                if (meat.label == food) {
+                    return;
+                }
+            }
+        }
+
+        data.meats.push({
+            label: food,
+            type: meatType
+        });
+    }
+
+    removeFood(food) {
+        const { meatType } = this.props;
+        const { meats } = data;
+
+        let index = -1;
+        for (var i = 0, len = meats.length; i < len; i++) {
+            if (meats[i].label === food && meats[i].type == meatType) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index != -1) {
+            meats.splice(index, 1);
+        }
+
+        data.meats = meats;
+    }
     
     handleSelected = meats => {
         const { selected } = this.state;
-        if (selected) {
-            this.setState({ selected: false }, () => {
-                // MANIPULAR O OBJETO DOS
-                // ALIMENTOS AQUI
-                // ADCIONAR ALIMENTOS
-                console.log(meats);
+
+        if (!selected) {
+            this.setState({ selected: true }, () => {
+                this.addFood(meats);
             });
-            return;
+        } else {
+            this.setState({ selected: false }, () => {
+                this.removeFood(meats);
+            });
         }
-        this.setState({ selected: true }, () => {
-            // RETIRAR ALIMENTOS
-            console.log(meats);
-        });
     };
 
     render() {
+
         const { text } = this.props;
         const { selected } = this.state;
-        
+
         return (
             <View>
-                {selected && (
+                {!selected && (
                      <TouchableOpacity 
                          style={styles.container} 
                          onPress={() => this.handleSelected(text)}
@@ -50,7 +87,7 @@ export default class SelectedButton extends React.Component {
                     </TouchableOpacity>
                
                 )}
-                {!selected && (
+                {selected && (
                     <TouchableOpacity 
                         style={[styles.container, {backgroundColor: colors.red}]}
                         onPress={() => this.handleSelected(text)}

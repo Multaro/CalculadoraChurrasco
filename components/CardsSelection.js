@@ -1,14 +1,21 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
+import strings from '../utils/strings'
+import data from '../utils/data';
+
 import SelectedButton from './SelectedButton';
 
 export default function CardsSelection (props) {
 
+    const { meats } = data;
+
     let cards = [];
     props.texts.forEach(text => {
+        const meatFound = meats.find(meat => meat.label == text && meat.type == props.id);
+
         cards.push(
-            <SelectedButton key={text} text={text}/>
+            <SelectedButton key={text} text={text} meatType={props.id} selected={meatFound}/>
         );
     });
 
