@@ -8,6 +8,7 @@ import {
 
 import images from '../utils/images';
 import colors from '../utils/colors';
+import strings  from '../utils/strings'
 
 import TextApp from '../components/TextApp';
 import CardsSelection from '../components/CardsSelection';
@@ -17,9 +18,9 @@ export default class MeatsAndVegetables extends React.Component {
     state = {
         meats: {
             beef: true,
-            pigMeat: false,
-            sheepMeat: false,
-            chickenMeat: false,
+            pig: false,
+            sheep: false,
+            chicken: false,
             vegetables: false
         }
     };
@@ -42,11 +43,13 @@ export default class MeatsAndVegetables extends React.Component {
     render() {
         const { 
             beef,
-            pigMeat,
-            sheepMeat,
-            chickenMeat,
+            pig,
+            sheep,
+            chicken,
             vegetables
         } = this.state.meats;
+
+        const { meats } = strings;
 
         const icons = [];
         for (const key in this.state.meats) {
@@ -62,90 +65,45 @@ export default class MeatsAndVegetables extends React.Component {
                 imageStyle={styles.image}
             >
                 <View style={styles.background} onPress={this.handleSelectedButton}>
-                    <TextApp text='QUAIS CARNES E VEGETAIS SERÃO SERVIDOS?'/>
+                    <TextApp text={meats.title}/>
                     <TouchableOpacity onPress={() => this.handleMeat('beef')}>
-                        <CardsMeatsAndVegetables text="CARNE BOVINA"/>
+                        <CardsMeatsAndVegetables text={meats.beef.description}/>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => this.handleMeat('pigMeat')}>
-                        <CardsMeatsAndVegetables text="CARNE SUÍNA"/>
+                    <TouchableOpacity onPress={() => this.handleMeat('pig')}>
+                        <CardsMeatsAndVegetables text={meats.pig.description}/>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => this.handleMeat('sheepMeat')}>
-                        <CardsMeatsAndVegetables text="CARNE OVINA"/>
+                    <TouchableOpacity onPress={() => this.handleMeat('sheep')}>
+                        <CardsMeatsAndVegetables text={meats.sheep.description}/>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => this.handleMeat('chickenMeat')}>
-                        <CardsMeatsAndVegetables text="CARNE DE FRANGO"/>
+                    <TouchableOpacity onPress={() => this.handleMeat('chicken')}>
+                        <CardsMeatsAndVegetables text={meats.chicken.description}/>
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => this.handleMeat('vegetables')}>
-                        <CardsMeatsAndVegetables text="VEGETAIS"/>
+                        <CardsMeatsAndVegetables text={meats.vegetables.description}/>
                     </TouchableOpacity>
 
                     { beef && (
-                        <CardsSelection texts={
-                            [
-                                'Alcatra',
-                                'Contra Filé',
-                                'Costela Bovina',
-                                'Filé Mignon',
-                                'Fraldinha',
-                                'Maminha',
-                                'Picanha'
-                            ]
-                        } />
+                        <CardsSelection texts={meats.beef.types} />
                     )}
 
-                    { pigMeat && (
-                        <CardsSelection texts={
-                            [
-                                'Alcatra',
-                                'Costela Suína',
-                                'Linguiças frescas',
-                                'Lombo',
-                                'Picanha'
-                            ]
-                        } />
+                    { pig && (
+                        <CardsSelection texts={meats.pig.types} />
                     )}
 
-                    { sheepMeat && (
-                        <CardsSelection texts={
-                            [
-                                'Carré',
-                                'Paleta',
-                                'Pernil',
-                                'Picanha de Cordeiro'
-                            ]
-                        } />
+                    { sheep && (
+                        <CardsSelection texts={meats.sheep.types} />
                     )}
 
-                    { chickenMeat && (
-                        <CardsSelection texts={
-                            [
-                                'Coração',
-                                'Coxa',
-                                'Coxa de asa',
-                                'Peito',
-                                'Sobrecoxa',
-                                'Tulipa de frango'
-                            ]
-                        } />
+                    { chicken && (
+                        <CardsSelection texts={meats.chicken.types} />
                     )}
 
                     { vegetables && (
-                        <CardsSelection texts={
-                            [
-                                'Abobrinha',
-                                'Berinjela',
-                                'Brócolis',
-                                'Cebola',
-                                'Cenoura',
-                                'Cogumelo',
-                                'Pimentão',
-                                'Tomate'
-                            ]
-                        } />
+                        <CardsSelection texts={meats.vegetables.types} />
                     )}
 
                 </View>
