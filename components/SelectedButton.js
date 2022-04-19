@@ -38,7 +38,7 @@ export default class SelectedButton extends React.Component {
     render() {
         const { text } = this.props;
         const { selected } = this.state;
-
+        
         return (
             <View>
                 {selected && (
@@ -65,18 +65,20 @@ export default class SelectedButton extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
+        flex: '1 1 21%',
+        width: '200px',
         borderWidth: 1,
         borderColor: 'silver',
         padding: 10
     },
     font: {
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 14,
         color: colors.red,
     },
     fontSelected: {
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 14,
         color: '#fff'
     }
 });

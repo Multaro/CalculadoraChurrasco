@@ -3,7 +3,6 @@ import {
     View,
     ImageBackground,
     StyleSheet,
-    Text,
     TouchableOpacity
 } from 'react-native';
 
@@ -12,6 +11,7 @@ import colors from '../utils/colors';
 
 import TextApp from '../components/TextApp';
 import CardsSelection from '../components/CardsSelection';
+import CardsMeatsAndVegetables from '../components/CardsMeatsAndVegetables';
 
 export default class MeatsAndVegetables extends React.Component {
     state = {
@@ -48,6 +48,13 @@ export default class MeatsAndVegetables extends React.Component {
             vegetables
         } = this.state.meats;
 
+        const icons = [];
+        for (const key in this.state.meats) {
+            if (Object.hasOwnProperty.call(this.state.meats, key)) {
+                icons.push(key);
+            }
+        }
+
         return (
             <ImageBackground 
                 source={images.background}
@@ -57,23 +64,23 @@ export default class MeatsAndVegetables extends React.Component {
                 <View style={styles.background} onPress={this.handleSelectedButton}>
                     <TextApp text='QUAIS CARNES E VEGETAIS SERÃO SERVIDOS?'/>
                     <TouchableOpacity onPress={() => this.handleMeat('beef')}>
-                        <Text>CARNE BOVINA</Text>
+                        <CardsMeatsAndVegetables text="CARNE BOVINA"/>
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => this.handleMeat('pigMeat')}>
-                        <Text>CARNE SUÍNA</Text>
+                        <CardsMeatsAndVegetables text="CARNE SUÍNA"/>
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => this.handleMeat('sheepMeat')}>
-                        <Text>CARNE OVINA</Text>
+                        <CardsMeatsAndVegetables text="CARNE OVINA"/>
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => this.handleMeat('chickenMeat')}>
-                        <Text>CARNE DE FRANGO</Text>
+                        <CardsMeatsAndVegetables text="CARNE DE FRANGO"/>
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => this.handleMeat('vegetables')}>
-                        <Text>VEGETAIS</Text>
+                        <CardsMeatsAndVegetables text="VEGETAIS"/>
                     </TouchableOpacity>
 
                     { beef && (

@@ -8,21 +8,29 @@ export default function CardsSelection (props) {
     let cards = [];
     props.texts.forEach(text => {
         cards.push(
-            <SelectedButton text={text}/>
+            <SelectedButton key={text} text={text}/>
         );
     });
 
     return (
-        <View style={styles.wholeCard}>
-            {cards}
+        <View style={styles.container}>
+            <View style={styles.wholeCard}>
+                {cards}
+            </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    container: {
+        width: '40%',
+        padding: 20
+    },
     wholeCard: {
-        justifyContent: 'space-between',
         flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        gap: '20px'
     }
 });
