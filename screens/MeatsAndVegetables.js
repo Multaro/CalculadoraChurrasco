@@ -11,26 +11,32 @@ import images from '../utils/images';
 import colors from '../utils/colors';
 
 import TextApp from '../components/TextApp';
-import SelectedButton from '../components/SelectedButton';
+import CardsSelection from '../components/CardsSelection';
 
 export default class MeatsAndVegetables extends React.Component {
     state = {
-        beef: true,
-        pigMeat: false,
-        sheepMeat: false,
-        chickenMeat: false,
-        vegetables: false,
+        meats: {
+            beef: true,
+            pigMeat: false,
+            sheepMeat: false,
+            chickenMeat: false,
+            vegetables: false
+        }
     };
 
-    handleTeste = () => {
-        const { beef, pigMeat } = this.state;
-        if(beef) {
-            this.setState({ beef: false });
-            this.setState({ pigMeat: true });
-            return;
+    handleMeat = (key) => {
+
+        let meats = this.state.meats;
+
+        for (let meat in meats) {
+            if (meat == key) {
+                meats[meat] = true;
+            } else {
+                meats[meat] = false;
+            }
         }
-        this.setState({ beef: true });
-        this.setState({ pigMeat: false });
+
+        this.setState({ meats: meats});
     }
 
     render() {
@@ -40,7 +46,7 @@ export default class MeatsAndVegetables extends React.Component {
             sheepMeat,
             chickenMeat,
             vegetables
-        } = this.state;
+        } = this.state.meats;
 
         return (
             <ImageBackground 
@@ -49,89 +55,90 @@ export default class MeatsAndVegetables extends React.Component {
                 imageStyle={styles.image}
             >
                 <View style={styles.background} onPress={this.handleSelectedButton}>
-                    <TextApp text='QUAIS CARNES E VEGETARIANOS SERÃO SERVIDOS?'/>
-                    <TouchableOpacity onPress={this.handleTeste}>
-                        <Text>AAAAAAAAAAAAA</Text>
+                    <TextApp text='QUAIS CARNES E VEGETAIS SERÃO SERVIDOS?'/>
+                    <TouchableOpacity onPress={() => this.handleMeat('beef')}>
+                        <Text>CARNE BOVINA</Text>
                     </TouchableOpacity>
 
-                    {beef && (
-                        <View style={
-                            {
-                                justifyContent: 'space-between',
-                                flex: 1
-                            }}
-                        >
-                            <SelectedButton text='Alcatra' />
-                            <SelectedButton text='Contra Filé' />
-                            <SelectedButton text='Costela Bovina' />
-                            <SelectedButton text='Filé Mignon' />
-                            <SelectedButton text='Fraldinha' />
-                            <SelectedButton text='Maminha' />
-                            <SelectedButton text='Picanha' />
-                        </View>
+                    <TouchableOpacity onPress={() => this.handleMeat('pigMeat')}>
+                        <Text>CARNE SUÍNA</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => this.handleMeat('sheepMeat')}>
+                        <Text>CARNE OVINA</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => this.handleMeat('chickenMeat')}>
+                        <Text>CARNE DE FRANGO</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => this.handleMeat('vegetables')}>
+                        <Text>VEGETAIS</Text>
+                    </TouchableOpacity>
+
+                    { beef && (
+                        <CardsSelection texts={
+                            [
+                                'Alcatra',
+                                'Contra Filé',
+                                'Costela Bovina',
+                                'Filé Mignon',
+                                'Fraldinha',
+                                'Maminha',
+                                'Picanha'
+                            ]
+                        } />
                     )}
 
-                    {pigMeat && (
-                        <View style={
-                            {
-                                justifyContent: 'space-between',
-                                flex: 1
-                            }}
-                        >
-                            <SelectedButton text='Alcatra' />
-                            <SelectedButton text='Costela Suína' />
-                            <SelectedButton text='Linguiças frescas' />
-                            <SelectedButton text='Lombo' />
-                            <SelectedButton text='Picanha' />
-                        </View>
+                    { pigMeat && (
+                        <CardsSelection texts={
+                            [
+                                'Alcatra',
+                                'Costela Suína',
+                                'Linguiças frescas',
+                                'Lombo',
+                                'Picanha'
+                            ]
+                        } />
                     )}
 
-                    {sheepMeat && (
-                        <View style={
-                            {
-                                justifyContent: 'space-between',
-                                flex: 1
-                            }}
-                        >
-                            <SelectedButton text='Carré' />
-                            <SelectedButton text='Paleta' />
-                            <SelectedButton text='Pernil' />
-                            <SelectedButton text='Picanha de Cordeiro' />
-                        </View>
+                    { sheepMeat && (
+                        <CardsSelection texts={
+                            [
+                                'Carré',
+                                'Paleta',
+                                'Pernil',
+                                'Picanha de Cordeiro'
+                            ]
+                        } />
                     )}
 
-                    {chickenMeat && (
-                        <View style={
-                            {
-                                justifyContent: 'space-between',
-                                flex: 1
-                            }}
-                        >
-                            <SelectedButton text='Coração' />
-                            <SelectedButton text='Coxa' />
-                            <SelectedButton text='Coxa de asa' />
-                            <SelectedButton text='Peito' />
-                            <SelectedButton text='Sobrecoxa' />
-                            <SelectedButton text='Tulipa de frango' />
-                        </View>
+                    { chickenMeat && (
+                        <CardsSelection texts={
+                            [
+                                'Coração',
+                                'Coxa',
+                                'Coxa de asa',
+                                'Peito',
+                                'Sobrecoxa',
+                                'Tulipa de frango'
+                            ]
+                        } />
                     )}
 
-                    {vegetables && (
-                        <View style={
-                            {
-                                justifyContent: 'space-between',
-                                flex: 1
-                            }}
-                        >
-                            <SelectedButton text='Abobrinha' />
-                            <SelectedButton text='Berinjela' />
-                            <SelectedButton text='Brócolis' />
-                            <SelectedButton text='Cebola' />
-                            <SelectedButton text='Cenoura' />
-                            <SelectedButton text='Cogumelo' />
-                            <SelectedButton text='Pimentão' />
-                            <SelectedButton text='Tomate' />
-                        </View>
+                    { vegetables && (
+                        <CardsSelection texts={
+                            [
+                                'Abobrinha',
+                                'Berinjela',
+                                'Brócolis',
+                                'Cebola',
+                                'Cenoura',
+                                'Cogumelo',
+                                'Pimentão',
+                                'Tomate'
+                            ]
+                        } />
                     )}
 
                 </View>
