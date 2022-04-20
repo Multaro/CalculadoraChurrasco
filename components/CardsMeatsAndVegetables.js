@@ -6,14 +6,6 @@ import {
     StyleSheet
 } from 'react-native';
 
-<<<<<<< HEAD
-export default function CardsMeatsAndVegetables ({icon, text}) {
-
-    return (
-        <View>
-            <Image source={icon}/>
-            <Text>{text}</Text>
-=======
 export default function CardsMeatsAndVegetables (props) {
     return (
         <View style={styles.container}>
@@ -21,16 +13,11 @@ export default function CardsMeatsAndVegetables (props) {
                 <Image source={props.icon} style={styles.image}/>
             </View>
             <Text style={styles.label}>{props.text}</Text>
->>>>>>> 3a3e70af815d83da5b4d2e1b4819e4fa742d0325
         </View>
     )
 };
 
 const styles = StyleSheet.create({
-<<<<<<< HEAD
-
-});
-=======
     container: {
         flex: 1,
         alignItems: 'center',
@@ -49,4 +36,3 @@ const styles = StyleSheet.create({
         fontSize: 14
     }
 });
->>>>>>> 3a3e70af815d83da5b4d2e1b4819e4fa742d0325
