@@ -21,7 +21,10 @@ export default function CardsSelection ({texts}) {
                 style={styles.wholeCard}
                 data={types}
                 keyExtractor={(item) => item.id}
-                renderItem={({ item }) => <SelectedButton text={item.type} />}
+                renderItem={({ item }) => <SelectedButton 
+                    text={item.type}
+                    meatType={item.type}
+                />}
             />
         </View>
     );
