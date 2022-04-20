@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     imageContainer: {
-        border: '1px solid gray',
+        borderWidth: 1,
+        borderColor: 'silver',
         width: '100px',
         height: '100px',
         alignItems: 'center',
