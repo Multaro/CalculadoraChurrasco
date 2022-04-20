@@ -9,5 +9,6 @@ import CardsSelection from './components/CardsSelection';
 import strings from './utils/strings';
 
 export default function App() {
-    return <CardsSelection texts={strings.sideDishes} />
+    return <MeatsAndVegetables />
+    //<CardsSelection texts={strings.sideDishes} />
 }

@@ -64,23 +64,14 @@ export default class SelectedButton extends React.Component {
             this.setState({ selected: true }, () => {
                 this.addFood(meats);
             });
-        } else {
-            this.setState({ selected: false }, () => {
-<<<<<<< HEAD
-                // RETIRAR ALIMENTOS
-                console.log(meats);
-=======
-                this.removeFood(meats);
->>>>>>> 3a3e70af815d83da5b4d2e1b4819e4fa742d0325
-            });
+            return;
         }
-<<<<<<< HEAD
-        this.setState({ selected: true }, () => {
-            // ADCIONAR ALIMENTOS
+        this.setState({ selected: false }, () => {
+            // RETIRAR ALIMENTOS
             console.log(meats);
+            this.removeFood(meats);
+            
         });
-=======
->>>>>>> 3a3e70af815d83da5b4d2e1b4819e4fa742d0325
     };
 
     render() {

@@ -24,13 +24,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     imageContainer: {
-        width: '100px',
-        height: '100px'
+        //width: '100px',
+        //height: '100px'
     },
     image: {
-        objectFit: 'contain',
-        maxWidth: '100%',
-        maxHeight: '100%'
+        //objectFit: 'contain',
+        //maxWidth: '100%',
+        //maxHeight: '100%'
     },
     label: {
         fontSize: 14
