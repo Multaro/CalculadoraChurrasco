@@ -23,7 +23,7 @@ export default class SelectedButton extends React.Component {
     addFood(food) {
         const { meats } = data;
         const { meatType } = this.props;
-
+        
         for (const meat in meats) {
             if (Object.hasOwnProperty.call(meats, meat)) {
                 if (meat.label == food) {
@@ -67,10 +67,7 @@ export default class SelectedButton extends React.Component {
             return;
         }
         this.setState({ selected: false }, () => {
-            // RETIRAR ALIMENTOS
-            console.log(meats);
             this.removeFood(meats);
-            
         });
     };
 
