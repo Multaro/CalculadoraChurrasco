@@ -5,6 +5,9 @@ import {
     FlatList
 } from 'react-native';
 
+import strings from '../utils/strings'
+import data from '../utils/data';
+
 import SelectedButton from './SelectedButton';
 
 export default function CardsSelection ({texts}) {
