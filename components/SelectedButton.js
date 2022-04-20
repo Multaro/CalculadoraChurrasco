@@ -22,15 +22,13 @@ export default class SelectedButton extends React.Component {
         const { selected } = this.state;
         if (selected) {
             this.setState({ selected: false }, () => {
-                // MANIPULAR O OBJETO DOS
-                // ALIMENTOS AQUI
-                // ADCIONAR ALIMENTOS
+                // RETIRAR ALIMENTOS
                 console.log(meats);
             });
             return;
         }
         this.setState({ selected: true }, () => {
-            // RETIRAR ALIMENTOS
+            // ADCIONAR ALIMENTOS
             console.log(meats);
         });
     };
@@ -65,8 +63,8 @@ export default class SelectedButton extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: '1 1 21%',
-        width: '200px',
+        flex: .2,
+        //width: '200px',
         borderWidth: 1,
         borderColor: 'silver',
         padding: 10

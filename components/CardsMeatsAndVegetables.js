@@ -6,12 +6,12 @@ import {
     StyleSheet
 } from 'react-native';
 
-export default function CardsMeatsAndVegetables (props) {
+export default function CardsMeatsAndVegetables ({icon, text}) {
 
     return (
         <View>
-            <Image source={props.icon}/>
-            <Text>{props.text}</Text>
+            <Image source={icon}/>
+            <Text>{text}</Text>
         </View>
     )
 };

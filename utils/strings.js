@@ -61,5 +61,15 @@ export default {
                 'Tomate'
             ]
         }
+    },
+    sideDishes: {
+        types: [
+            'Arroz',
+            'Farofa',
+            'Maionese',
+            'Pão de Alho',
+            'Queijo Coalhado',
+            'Vinagrete'
+        ]
     }
 }

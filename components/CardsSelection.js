@@ -1,36 +1,39 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { 
+    View,
+    StyleSheet,
+    FlatList
+} from 'react-native';
 
 import SelectedButton from './SelectedButton';
 
-export default function CardsSelection (props) {
-
-    let cards = [];
-    props.texts.forEach(text => {
-        cards.push(
-            <SelectedButton key={text} text={text}/>
-        );
+export default function CardsSelection ({texts}) {
+    const types = texts.types.map((element, c) => {
+        return {...element, id: c, type: element}
     });
 
     return (
         <View style={styles.container}>
-            <View style={styles.wholeCard}>
-                {cards}
-            </View>
+            <FlatList 
+                style={styles.wholeCard}
+                data={types}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => <SelectedButton text={item.type} />}
+            />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        width: '40%',
+        flex: 1,
+        //width: '40%',
         padding: 20
     },
     wholeCard: {
         flex: 1,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        gap: '20px'
+        //flexDirection: 'row',
+        //flexWrap: 'wrap',
+        //justifyContent: 'space-between',
     }
 });

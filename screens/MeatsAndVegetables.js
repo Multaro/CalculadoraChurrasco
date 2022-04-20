@@ -8,7 +8,7 @@ import {
 
 import images from '../utils/images';
 import colors from '../utils/colors';
-import strings  from '../utils/strings'
+import strings from '../utils/strings'
 
 import TextApp from '../components/TextApp';
 import CardsSelection from '../components/CardsSelection';
@@ -37,7 +37,7 @@ export default class MeatsAndVegetables extends React.Component {
             }
         }
 
-        this.setState({ meats: meats});
+        this.setState({ meats });
     }
 
     render() {
@@ -64,10 +64,14 @@ export default class MeatsAndVegetables extends React.Component {
                 style={styles.imageContainer}
                 imageStyle={styles.image}
             >
-                <View style={styles.background} onPress={this.handleSelectedButton}>
+                <View style={styles.background} 
+                    onPress={this.handleSelectedButton}
+                >
                     <TextApp text={meats.title}/>
                     <View style={styles.meatTypes}>
-                        <TouchableOpacity onPress={() => this.handleMeat(meats.beef.key)}>
+                        <TouchableOpacity 
+                            onPress={() => this.handleMeat(meats.beef.key)}
+                        >
                             <CardsMeatsAndVegetables
                                 text={meats.beef.description}
                                 selected={beef}
@@ -75,28 +79,36 @@ export default class MeatsAndVegetables extends React.Component {
                                 />
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={() => this.handleMeat(meats.pig.key)}>
+                        <TouchableOpacity 
+                            onPress={() => this.handleMeat(meats.pig.key)}
+                        >
                             <CardsMeatsAndVegetables
                                 text={meats.pig.description}
                                 selected={pig}
                                 icon={images.pigIcon} />
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={() => this.handleMeat(meats.sheep.key)}>
+                        <TouchableOpacity onPress={() => 
+                            this.handleMeat(meats.sheep.key)}
+                        >
                             <CardsMeatsAndVegetables
                                 text={meats.sheep.description}
                                 selected={sheep}
                                 icon={images.sheepIcon} />
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={() => this.handleMeat(meats.chicken.key)}>
+                        <TouchableOpacity 
+                            onPress={() => this.handleMeat(meats.chicken.key)}
+                        >
                             <CardsMeatsAndVegetables
                                 text={meats.chicken.description}
                                 selected={chicken}
                                 icon={images.chickenIcon} />
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={() => this.handleMeat(meats.vegetables.key)}>
+                        <TouchableOpacity 
+                            onPress={() => this.handleMeat(meats.vegetables.key)}
+                        >
                             <CardsMeatsAndVegetables
                                 text={meats.vegetables.description}
                                 selected={vegetables}
@@ -154,12 +166,12 @@ const styles = StyleSheet.create({
         resizeMode: 'cover'
     },
     meatTypes: {
-        border: '1px solid red',
+        //border: '1px solid red',
         flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        gap: 40,
+        //gap: 40,
         justifyContent: 'space-between',
-        width: '40%',
+        //width: '40%',
     }
 });

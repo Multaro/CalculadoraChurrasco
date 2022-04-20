@@ -88,7 +88,6 @@ export default class BarbecuePersons extends React.Component {
         const prevTotal = countVegan - 1;
         this.setState({ countVegan: prevTotal });
     };
-
     
     render() {
         const { 
