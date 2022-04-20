@@ -1,8 +1,8 @@
 export default {
-    meatsTitle: 'QUAIS CARNES E VEGETAIS SERÃO SERVIDOS?',
-    meats: [
-        {
-            id: 'beef',
+    meats: {
+        title: 'QUAIS CARNES E VEGETAIS SERÃO SERVIDOS?',
+        beef: {
+            key: 'beef',
             description: 'CARNE BOVINA',
             types: [
                 'Alcatra',
@@ -15,8 +15,8 @@ export default {
             ],
             icon: require('../assets/beef-icon.png')
         },
-        {
-            id: 'pig',
+        pig: {
+            key: 'pig',
             description: 'CARNE SUÍNA',
             types: [
                 'Alcatra',
@@ -27,8 +27,8 @@ export default {
             ],
             icon: require('../assets/pig-icon.png')
         },
-        {
-            id: 'sheep',
+        sheep: {
+            key: 'sheep',
             description: 'CARNE OVINA',
             types: [
                 'Carré',
@@ -38,8 +38,8 @@ export default {
             ],
             icon: require('../assets/sheep-icon.png')
         },
-        {
-            id: 'chicken',
+        chicken: {
+            key: 'chicken',
             description: 'CARNE DE FRANGO',
             types: [
                 'Coração',
@@ -51,8 +51,8 @@ export default {
             ],
             icon: require('../assets/chicken-icon.png')
         },
-        {
-            id: 'vegetables',
+        vegetables: {
+            key: 'vegetables',
             description: 'VEGETAIS',
             types: [
                 'Abobrinha',
@@ -65,8 +65,8 @@ export default {
                 'Tomate'
             ],
             icon: require('../assets/vegetable-icon.png')
-        }   
-    ],
+        }
+    },
     sideDishes: {
         types: [
             'Arroz',

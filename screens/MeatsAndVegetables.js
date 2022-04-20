@@ -51,13 +51,6 @@ export default class MeatsAndVegetables extends React.Component {
 
         const { meats } = strings;
 
-        const icons = [];
-        for (const key in this.state.meats) {
-            if (Object.hasOwnProperty.call(this.state.meats, key)) {
-                icons.push(key);
-            }
-        }
-
         return (
             <ImageBackground 
                 source={images.background}
@@ -75,7 +68,7 @@ export default class MeatsAndVegetables extends React.Component {
                             <CardsMeatsAndVegetables
                                 text={meats.beef.description}
                                 selected={beef}
-                                icon={images.beefIcon}
+                                icon={meats.beef.icon}
                                 />
                         </TouchableOpacity>
 
@@ -85,7 +78,7 @@ export default class MeatsAndVegetables extends React.Component {
                             <CardsMeatsAndVegetables
                                 text={meats.pig.description}
                                 selected={pig}
-                                icon={images.pigIcon} />
+                                icon={meats.pig.icon} />
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={() => 
@@ -94,7 +87,7 @@ export default class MeatsAndVegetables extends React.Component {
                             <CardsMeatsAndVegetables
                                 text={meats.sheep.description}
                                 selected={sheep}
-                                icon={images.sheepIcon} />
+                                icon={meats.sheep.icon} />
                         </TouchableOpacity>
 
                         <TouchableOpacity 
@@ -103,7 +96,7 @@ export default class MeatsAndVegetables extends React.Component {
                             <CardsMeatsAndVegetables
                                 text={meats.chicken.description}
                                 selected={chicken}
-                                icon={images.chickenIcon} />
+                                icon={meats.chicken.icon} />
                         </TouchableOpacity>
 
                         <TouchableOpacity 
@@ -112,28 +105,28 @@ export default class MeatsAndVegetables extends React.Component {
                             <CardsMeatsAndVegetables
                                 text={meats.vegetables.description}
                                 selected={vegetables}
-                                icon={images.vegetableIcon} />
+                                icon={meats.vegetables.icon} />
                         </TouchableOpacity>
                     </View>
 
                     { beef && (
-                        <CardsSelection texts={meats.beef.types} />
+                        <CardsSelection texts={meats.beef} />
                     )}
 
                     { pig && (
-                        <CardsSelection texts={meats.pig.types} />
+                        <CardsSelection texts={meats.pig} />
                     )}
 
                     { sheep && (
-                        <CardsSelection texts={meats.sheep.types} />
+                        <CardsSelection texts={meats.sheep} />
                     )}
 
                     { chicken && (
-                        <CardsSelection texts={meats.chicken.types} />
+                        <CardsSelection texts={meats.chicken} />
                     )}
 
                     { vegetables && (
-                        <CardsSelection texts={meats.vegetables.types} />
+                        <CardsSelection texts={meats.vegetables} />
                     )}
 
                 </View>
