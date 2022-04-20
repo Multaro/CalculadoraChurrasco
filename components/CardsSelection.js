@@ -14,25 +14,23 @@ const meatAlreadySelected = (element, id) => {
 } 
 
 export default function CardsSelection ({texts}) {
-
     const types = texts.types.map((element, c) => {
         return {...element, id: c, type: element, selected: meatAlreadySelected(element, texts.id)}
     });
 
     return (
-        <View style={styles.container}>
-            <FlatList 
-                style={styles.wholeCard}
-                horizontal={true}
-                data={types}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => <SelectedButton 
-                    text={item.type}
-                    meatType={texts.id}
-                    selected={item.selected}
-                />}
-            />
-        </View>
+        <FlatList 
+            style={styles.wholeCard}
+            columnWrapperStyle={{justifyContent: 'space-between'}}
+            numColumns={3}
+            data={types}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <SelectedButton 
+                text={item.type}
+                meatType={texts.id}
+                selected={item.selected}
+            />}
+        />
     );
 };
 
