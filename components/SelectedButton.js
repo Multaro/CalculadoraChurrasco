@@ -102,20 +102,20 @@ export default class SelectedButton extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: .2,
-        //width: '200px',
+        flex: 1,
+        minWidth: '50%',
         borderWidth: 1,
         borderColor: 'silver',
         padding: 10
     },
     font: {
         textAlign: 'center',
-        fontSize: 14,
+        fontSize: 15,
         color: colors.red,
     },
     fontSelected: {
         textAlign: 'center',
-        fontSize: 14,
+        fontSize: 15,
         color: '#fff'
     }
 });
