@@ -6,9 +6,4 @@ export default {
     ChildsIcon: require('../assets/child-icon.png'),
     //barbecueIcon: require('../assets/'),
     //mensIcon: require('../assets/'),
-    beefIcon: require('../assets/beef-icon.png'),
-    pigIcon: require('../assets/pig-icon.png'),
-    sheepIcon: require('../assets/sheep-icon.png'),
-    chickenIcon: require('../assets/chicken-icon.png'),
-    vegetableIcon: require('../assets/vegetable-icon.png'),
 };
