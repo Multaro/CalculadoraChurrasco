@@ -21,8 +21,8 @@ export default function CardsSelection ({texts}) {
     return (
         <FlatList 
             style={styles.wholeCard}
-            columnWrapperStyle={{justifyContent: 'space-between'}}
-            numColumns={3}
+            columnWrapperStyle={styles.row}
+            numColumns={2}
             data={types}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => <SelectedButton 
@@ -35,11 +35,11 @@ export default function CardsSelection ({texts}) {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        //width: '40%',
-    },
     wholeCard: {
         flex: 1,
+    },
+    row: {
+        flex: 1,
+        padding: '2%',
     }
 });
