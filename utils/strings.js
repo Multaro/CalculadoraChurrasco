@@ -76,5 +76,17 @@ export default {
             'Queijo Coalhado',
             'Vinagrete'
         ]
+    },
+    supplies: {
+        types: [
+            'Carvão',
+            'Copos',
+            'Gelos',
+            'Guardanapos',
+            'Limão',
+            'Pratos',
+            'Sal Grosso',
+            'Talheres'
+        ]
     }
 }

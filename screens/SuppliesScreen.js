@@ -1,20 +1,20 @@
 import React from 'react';
 import {
     StyleSheet,
-    View,
     ImageBackground,
+    View,
     Text
 } from 'react-native';
 
-import CardsSelection from '../components/CardsSelection';
+import colors from '../utils/colors';
+import strings from '../utils/strings';
+import images from '../utils/images';
+
 import TextApp from '../components/TextApp';
+import CardsSelection from '../components/CardsSelection';
 import TouchableOpacityApp from '../components/TouchableOpacityApp';
 
-import colors from '../utils/colors';
-import images from '../utils/images';
-import strings from '../utils/strings';
-
-export default class SideDishesScreen extends React.Component {
+export default class SuppliesScreen extends React.Component {
     state = {
 
     };
@@ -29,28 +29,22 @@ export default class SideDishesScreen extends React.Component {
             >
                 <View style={styles.background}>
                     <View style={styles.container}>
-                        <TextApp text='VOCÊ PENSOU EM QUAIS ACOMPANHAMENTOS?' /> 
-                        <Text style={{color: colors.grey}}>Descobrir novos sabores é facil quando você pode contar com alguns acompanhamentos. Assim como a carne e os vegetais, eles são importantes para agradar os convidados e tornar o momento ainda mais especial.</Text>
-                    
+                        <TextApp text='NÃO ESQUEÇA DOS SUPRIMENTOS'/>
+                        <Text>Não precisa de firula, mas o básico é essencial. Os suprimentos garantem um churrasco de respeito. Selecione tudo aquilo que precisa:</Text>
                     </View>
-                    
-                    <CardsSelection texts={strings.sideDishes} />
-                    
+                    <CardsSelection texts={strings.supplies} />
+
                     <View style={styles.footerSection}>
-                        <TouchableOpacityApp
-                            text={'PRÓXIMO ->'}
-                        />
+                        <TouchableOpacityApp text='PRÓXIMO ->' />
                     </View>
                 </View>
-
-                
             </ImageBackground>
         );
     }
 }
 
 const styles = StyleSheet.create({
-   background: {
+    background: {
         flex: 1,
         paddingVertical: 40,
         backgroundColor: '#fff',
@@ -89,6 +83,9 @@ const styles = StyleSheet.create({
     footerSection: {
         flex: .1,
         alignItems: 'center',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end'            
     }
 });
+
+
+
