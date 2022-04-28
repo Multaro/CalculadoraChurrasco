@@ -1,7 +1,5 @@
 import React from 'react';
 import { 
-    View,
-    StyleSheet,
     FlatList
 } from 'react-native';
 
@@ -20,6 +18,7 @@ export default function CardsSelection ({texts}) {
 
     return (
         <FlatList
+            style={{maxHeight: '40%'}}
             numColumns={2}
             data={types}
             keyExtractor={(item) => item.id}

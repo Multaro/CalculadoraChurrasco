@@ -13,6 +13,7 @@ import strings from '../utils/strings'
 import TextApp from '../components/TextApp';
 import CardsSelection from '../components/CardsSelection';
 import CardsMeatsAndVegetables from '../components/CardsMeatsAndVegetables';
+import TouchableOpacityApp from '../components/TouchableOpacityApp';
 
 export default class MeatsAndVegetables extends React.Component {
     state = {
@@ -129,8 +130,10 @@ export default class MeatsAndVegetables extends React.Component {
                         <CardsSelection texts={meats.vegetables} />
                     )}
 
+                    <View style={styles.nextButton}>
+                        <TouchableOpacityApp text={strings.next}/>
+                    </View>
                 </View>
-
             </ImageBackground>
         );
     }
@@ -165,7 +168,12 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         padding: 20,
         justifyContent: 'space-around',
-        alignItems: 'center'
+        alignItems: 'center',
         //width: '40%',
+    },
+    nextButton: {
+        minWidth: '50%',
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
