@@ -19,9 +19,7 @@ export default function CardsSelection ({texts}) {
     });
 
     return (
-        <FlatList 
-            style={styles.wholeCard}
-            columnWrapperStyle={styles.row}
+        <FlatList
             numColumns={2}
             data={types}
             keyExtractor={(item) => item.id}
@@ -33,13 +31,3 @@ export default function CardsSelection ({texts}) {
         />
     );
 };
-
-const styles = StyleSheet.create({
-    wholeCard: {
-        flex: 1,
-    },
-    row: {
-        flex: 1,
-        padding: '2%',
-    }
-});

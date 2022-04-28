@@ -77,7 +77,7 @@ export default class SelectedButton extends React.Component {
         const { selected } = this.state;
 
         return (
-            <View>
+            <View style={styles.selectedButton}>
                 {!selected && (
                      <TouchableOpacity 
                          style={styles.container} 
@@ -101,12 +101,18 @@ export default class SelectedButton extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    selectedButton: {
         flex: 1,
-        minWidth: '50%',
+        flexGrow: 1,
+        flexBasis: 0,
+        alignItems: 'center',
+        padding: 20
+    },
+    container: {
         borderWidth: 1,
         borderColor: 'silver',
-        padding: 10
+        padding: 10,
+        width: '200px'
     },
     font: {
         textAlign: 'center',
