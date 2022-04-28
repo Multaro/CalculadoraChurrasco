@@ -10,7 +10,11 @@ export default function CardsMeatsAndVegetables ({text, icon}) {
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
-                <Image source={icon} style={styles.image}/>
+                <Image
+                    source={icon}
+                    style={styles.image}
+                    resizeMode={'contain'}
+                />
             </View>
             <Text style={styles.label}>{text}</Text>
         </View>
@@ -19,7 +23,6 @@ export default function CardsMeatsAndVegetables ({text, icon}) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
     },

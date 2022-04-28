@@ -159,12 +159,13 @@ const styles = StyleSheet.create({
         resizeMode: 'cover'
     },
     meatTypes: {
-        //border: '1px solid red',
-        flex: 1,
+        minWidth: '50%',
+        maxWidth: '70%',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        //gap: 40,
-        justifyContent: 'space-between',
+        padding: 20,
+        justifyContent: 'space-around',
+        alignItems: 'center'
         //width: '40%',
     }
 });
