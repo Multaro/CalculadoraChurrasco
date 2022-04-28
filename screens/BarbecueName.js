@@ -29,7 +29,6 @@ export default class App extends React.Component {
     handleButton = () => {
         const { cont } = this.state;
         const previousCont = cont;
-        alert(`Teste state ${previousCont}`);
 
         this.setState({ cont: previousCont + 1 });
     };
@@ -71,6 +70,10 @@ export default class App extends React.Component {
                             <CalendarPicker
                                 allowRangeSelection={true}
                                 minDate={new Date()}
+                                weekdays={['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']}
+                                months={['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']}
+                                previousTitle="Anterior"
+                                nextTitle="Próximo"
                                 width={500}
                                 onDateChange={this.onDateChange}
                             />
