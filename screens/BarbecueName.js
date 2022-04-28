@@ -5,6 +5,7 @@ import {
     ImageBackground,
     TextInput
 } from 'react-native';
+import CalendarPicker from 'react-native-calendar-picker/CalendarPicker';
 
 import TextApp from '../components/TextApp';
 import TouchableOpacityApp from '../components/TouchableOpacityApp';
@@ -13,10 +14,17 @@ import colors from '../utils/colors';
 import images from '../utils/images';
 
 export default class App extends React.Component {
-    state = {
-        cont: 0,
-        barbecue_name: ''
-    };
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            cont: 0,
+            barbecue_name: ''
+        }
+
+        this.onDateChange = this.onDateChange.bind(this);
+    }
 
     handleButton = () => {
         const { cont } = this.state;
@@ -33,6 +41,9 @@ export default class App extends React.Component {
 
         text = text.toUpperCase();
         this.setState({ barbecue_name : text });
+    }
+
+    onDateChange = date => {
     }
 
     render() {
@@ -56,6 +67,14 @@ export default class App extends React.Component {
                         />
 
                         <TextApp text='Qual será a data?' />
+                        <View style={styles.calendar}>
+                            <CalendarPicker
+                                allowRangeSelection={true}
+                                minDate={new Date()}
+                                width={500}
+                                onDateChange={this.onDateChange}
+                            />
+                        </View>
                     </View>
 
                     <View style={styles.footerSection}>
