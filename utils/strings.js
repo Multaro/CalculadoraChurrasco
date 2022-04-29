@@ -88,5 +88,6 @@ export default {
             'Sal Grosso',
             'Talheres'
         ]
-    }
+    },
+    next: 'PRÓXIMO'
 }
