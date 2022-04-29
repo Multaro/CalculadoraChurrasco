@@ -23,7 +23,7 @@ export default function PersonTypes({type, onSum, onSub, count, typeIcon}) {
                 onPress={onSum}
             >
                 <View style={styles.button}>
-                    <Text style={styles.text}>^</Text>
+                    <Text style={styles.text}>↑</Text>
                 </View>
             </TouchableOpacity>
                     
@@ -34,7 +34,7 @@ export default function PersonTypes({type, onSum, onSub, count, typeIcon}) {
                 onPress={onSub}
             >
                 <View style={styles.button}>
-                    <Text style={styles.text}>^</Text>
+                    <Text style={styles.text}>↓</Text>
                 </View>
             </TouchableOpacity>
         </View>
@@ -69,9 +69,8 @@ const styles = StyleSheet.create({
     },
     button: {
         flex: 1,
-        borderWidth: 1,
-        borderColor: '#fff',
-        backgroundColor: colors.black,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     text: {
         textAlign: 'center',
