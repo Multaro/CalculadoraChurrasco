@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     View,
@@ -8,21 +8,13 @@ import {
 
 import colors from '../utils/colors';
 import data from '../utils/data';
-import PropTypes from 'prop-types';
 
-export default class SelectedButton extends React.Component {
-    state = {
-        selected: this.props.selected
-    }
+export default function SelectedButton ({text, id, onSelect, onUnselect, alreadySelected}) {
 
-    static propTypes = {
-        text: PropTypes.string.isRequired,
-        meatType: PropTypes.string.isRequired
-    };
+    const [selected, changeSelected] = useState(alreadySelected);
 
-    addFood(food) {
+    const addFood = (food) => {
         const { meats } = data;
-        const { meatType } = this.props;
         
         for (const meat in meats) {
             if (Object.hasOwnProperty.call(meats, meat)) {
@@ -34,17 +26,16 @@ export default class SelectedButton extends React.Component {
 
         data.meats.push({
             label: food,
-            type: meatType
+            type: id
         });
     }
 
-    removeFood(food) {
-        const { meatType } = this.props;
+    const removeFood = (food) => {
         const { meats } = data;
 
         let index = -1;
         for (var i = 0, len = meats.length; i < len; i++) {
-            if (meats[i].label === food && meats[i].type == meatType) {
+            if (meats[i].label === food && meats[i].type == id) {
                 index = i;
                 break;
             }
@@ -57,47 +48,38 @@ export default class SelectedButton extends React.Component {
         data.meats = meats;
     }
     
-    handleSelected = meats => {
-        const { selected } = this.state;
-
+    const handleSelected = meats => {
         if (!selected) {
-            this.setState({ selected: true }, () => {
-                this.addFood(meats);
-            });
-            return;
+            changeSelected(true);
+
+            addFood(meats)
+        } else {
+            changeSelected(false);
+
+            removeFood(meats)
         }
-        this.setState({ selected: false }, () => {
-            this.removeFood(meats);
-        });
     };
-
-    render() {
-
-        const { text } = this.props;
-        const { selected } = this.state;
-
-        return (
-            <View style={styles.selectedButton}>
-                {!selected && (
-                     <TouchableOpacity 
-                         style={styles.container} 
-                         onPress={() => this.handleSelected(text)}
-                     >
-                        <Text style={styles.font}>{text}</Text>
-                    </TouchableOpacity>
-               
-                )}
-                {selected && (
-                    <TouchableOpacity 
-                        style={[styles.container, {backgroundColor: colors.red}]}
-                        onPress={() => this.handleSelected(text)}
-                    >
-                        <Text style={styles.fontSelected}>{text}</Text>
-                    </TouchableOpacity>
-                )}
-            </View>
-        );
-    }
+    
+    return (
+        <View style={styles.selectedButton}>
+            {!selected && (
+                <TouchableOpacity 
+                    style={styles.container} 
+                    onPress={() => handleSelected(text)}
+                >
+                    <Text style={styles.font}>{text}</Text>
+                </TouchableOpacity>
+            )}
+            {selected && (
+                <TouchableOpacity 
+                    style={[styles.container, {backgroundColor: colors.red}]}
+                    onPress={() => handleSelected(text)}
+                >
+                    <Text style={styles.fontSelected}>{text}</Text>
+                </TouchableOpacity>
+            )}
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({

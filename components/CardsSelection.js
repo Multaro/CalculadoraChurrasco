@@ -27,7 +27,7 @@ export default function CardsSelection ({texts}) {
             renderItem={({ item }) => <SelectedButton 
                 text={item.type}
                 meatType={texts.id}
-                selected={item.selected}
+                alreadySelected={item.selected}
             />}
         />
     );
