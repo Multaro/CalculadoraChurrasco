@@ -35,11 +35,18 @@ export default class App extends React.Component {
 
     handleBarbecueName = text => {
         const { barbecue_name } = this.state;
-        if (barbecue_name.length == 14) text = `${text} ...`;
-        if (barbecue_name.length > 15) return;
+        let newText = '';
 
-        text = text.toUpperCase();
-        this.setState({ barbecue_name : text });
+        if (text.length == 14) {
+            newText = `${barbecue_name} ...`;
+        } else if (text.length < 14) {
+            newText = `${text}`;
+        } else if (text.length > 14) {
+            return;
+        }
+
+        newText = newText.toUpperCase();
+        this.setState({barbecue_name : newText});
     }
 
     onDateChange = (date, type) => {
@@ -68,6 +75,7 @@ export default class App extends React.Component {
                             placeholder='Ex: churras em casa'
                             underlineColorAndroid='black'
                             onChangeText={this.handleBarbecueName}
+                            maxLength={50}
                         />
 
                         <TextApp text='Qual será a data?' />
