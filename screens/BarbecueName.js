@@ -90,7 +90,7 @@ export default class App extends React.Component {
                                 nextTitle="Próximo"
                                 selectMonthTitle={`Selecionar o Mês em `}
                                 selectYearTitle="Selecionar o Ano"
-                                width={500}
+                                width={400}
                                 selectedDayColor="#7300e6"
                                 selectedDayTextColor="#FFFFFF"
                                 textStyle={{
@@ -141,10 +141,10 @@ const styles = StyleSheet.create({
     },
     input: {
         padding: 5,
-        width: '50%',
+        width: '40%',
         textAlign: 'center',
-        border: '1px solid gray',
-        borderRadius: 4
+        borderBottomColor: colors.grey,
+        borderBottomWidth: 1
     },
     containerSection: {
         //marginTop: 60,
@@ -152,6 +152,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         alignItems: 'center',
         padding: 5
+    },
+    calendar: {
     },
     footerSection: {
         flex: .1,
