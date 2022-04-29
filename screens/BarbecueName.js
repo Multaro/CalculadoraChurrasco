@@ -42,11 +42,16 @@ export default class App extends React.Component {
         this.setState({ barbecue_name : text });
     }
 
-    onDateChange = date => {
+    onDateChange = (date, type) => {
+        if (type === 'END_DATE') {
+        } else {
+        }
     }
 
     render() {
         const { barbecue_name } = this.state;
+
+        const maxDate = new Date(2023, 12, 31);
 
         return(
             <ImageBackground
@@ -70,11 +75,19 @@ export default class App extends React.Component {
                             <CalendarPicker
                                 allowRangeSelection={true}
                                 minDate={new Date()}
+                                maxDate={maxDate}
                                 weekdays={['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']}
                                 months={['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']}
                                 previousTitle="Anterior"
                                 nextTitle="Próximo"
+                                selectMonthTitle={`Selecionar o Mês em `}
+                                selectYearTitle="Selecionar o Ano"
                                 width={500}
+                                selectedDayColor="#7300e6"
+                                selectedDayTextColor="#FFFFFF"
+                                textStyle={{
+                                    fontSize: 14
+                                }}
                                 onDateChange={this.onDateChange}
                             />
                         </View>
@@ -122,17 +135,20 @@ const styles = StyleSheet.create({
         padding: 5,
         width: '50%',
         textAlign: 'center',
+        border: '1px solid gray',
+        borderRadius: 4
     },
     containerSection: {
         //marginTop: 60,
         flex: 1,
         justifyContent: 'space-evenly',
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: 5
     },
     footerSection: {
         flex: .1,
         alignItems: 'center',
-        justifyContent: 'flex-end'   
+        justifyContent: 'flex-end'
     }
 });
 
