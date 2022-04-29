@@ -38,7 +38,7 @@ export default class App extends React.Component {
         let newText = '';
 
         if (text.length == 14) {
-            newText = `${barbecue_name} ...`;
+            newText = `${barbecue_name}...`;
         } else if (text.length < 14) {
             newText = `${text}`;
         } else if (text.length > 14) {
