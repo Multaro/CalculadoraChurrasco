@@ -6,10 +6,10 @@ import {
     StyleSheet
 } from 'react-native';
 
-export default function CardsMeatsAndVegetables ({text, icon}) {
+export default function CardsMeatsAndVegetables ({text, icon, selected}) {
     return (
         <View style={styles.container}>
-            <View style={styles.imageContainer}>
+            <View style={selected ? styles.imageSelectedContainer : styles.imageContainer}>
                 <Image
                     source={icon}
                     style={styles.image}
@@ -23,6 +23,14 @@ export default function CardsMeatsAndVegetables ({text, icon}) {
 
 const styles = StyleSheet.create({
     container: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    imageSelectedContainer: {
+        borderWidth: 1,
+        borderColor: 'black',
+        width: '100px',
+        height: '100px',
         alignItems: 'center',
         justifyContent: 'center'
     },
