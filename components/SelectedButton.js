@@ -85,16 +85,16 @@ export default function SelectedButton ({text, id, onSelect, onUnselect, already
 const styles = StyleSheet.create({
     selectedButton: {
         flex: 1,
+        width: '100%',
         flexGrow: 1,
-        flexBasis: 0,
-        alignItems: 'center',
-        padding: 20
+        //flexBasis: 1,
+        //alignItems: 'center',
+        padding: '2%'
     },
     container: {
         borderWidth: 1,
         borderColor: 'silver',
-        padding: 10,
-        width: '200px'
+        padding: 10
     },
     font: {
         textAlign: 'center',

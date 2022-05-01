@@ -28,13 +28,13 @@ TouchableOpacityApp.propTypes = {
 
 const styles = StyleSheet.create({
     container: {
-        minWidth: '50%',
+        minWidth: '100%',
         alignItems: 'center',
         justifyContent: 'center'
     },
     button: {
         height: 40,
-        width: '80%',
+        minWidth: '98%',
         backgroundColor: '#8e1616',
         justifyContent:'center',
         alignItems: 'center',
