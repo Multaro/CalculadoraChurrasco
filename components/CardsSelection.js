@@ -35,9 +35,11 @@ export default function CardsSelection ({texts}) {
 
 const styles = StyleSheet.create({
     listStyle: {
-        maxHeight: '40%'
+        flex: 1,
+        width: '100%',
     },
     contentContainer: {
-        alignItems: 'center'
+        flex: 1,
+        //width: '100%',
     }
 })

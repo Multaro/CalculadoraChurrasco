@@ -61,8 +61,11 @@ export default class MeatsAndVegetables extends React.Component {
                 <View style={styles.background} 
                     onPress={this.handleSelectedButton}
                 >
+                    
                     <TextApp text={meats.title}/>
+                    
                     <View style={styles.meatTypes}>
+
                         <TouchableOpacity 
                             onPress={() => this.handleMeat(meats.beef.key)}
                         >
@@ -162,17 +165,17 @@ const styles = StyleSheet.create({
         resizeMode: 'cover'
     },
     meatTypes: {
-        minWidth: '50%',
-        maxWidth: '70%',
+        marginVertical: '10%',
+        flex: 1,
+        width: '100%',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        padding: 20,
-        justifyContent: 'space-around',
+        padding: '3%',
+        justifyContent: 'center',
         alignItems: 'center',
         //width: '40%',
     },
     nextButton: {
-        minWidth: '50%',
         alignItems: 'center',
         justifyContent: 'center'
     }
