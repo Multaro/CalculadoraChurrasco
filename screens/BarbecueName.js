@@ -14,15 +14,12 @@ import colors from '../utils/colors';
 import images from '../utils/images';
 
 export default class App extends React.Component {
+    state = {
+        cont: 0,
+        barbecue_name: ''
+    };
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            cont: 0,
-            barbecue_name: ''
-        }
-
+    componentDidMount() {
         this.onDateChange = this.onDateChange.bind(this);
     }
 
@@ -73,32 +70,32 @@ export default class App extends React.Component {
                         <TextInput
                             style={styles.input}
                             placeholder='Ex: churras em casa'
-                            underlineColorAndroid='black'
                             onChangeText={this.handleBarbecueName}
                             maxLength={50}
                         />
 
                         <TextApp text='Qual será a data?' />
-                        <View style={styles.calendar}>
-                            <CalendarPicker
-                                allowRangeSelection={true}
-                                minDate={new Date()}
-                                maxDate={maxDate}
-                                weekdays={['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']}
-                                months={['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']}
-                                previousTitle="Anterior"
-                                nextTitle="Próximo"
-                                selectMonthTitle={`Selecionar o Mês em `}
-                                selectYearTitle="Selecionar o Ano"
-                                width={400}
-                                selectedDayColor="#7300e6"
-                                selectedDayTextColor="#FFFFFF"
-                                textStyle={{
-                                    fontSize: 14
-                                }}
-                                onDateChange={this.onDateChange}
-                            />
-                        </View>
+                        <CalendarPicker
+                            allowRangeSelection={true}
+                            minDate={new Date()}
+                            maxDate={maxDate}
+                            weekdays={['Seg', 'Ter', 'Qua', 'Qui',
+                            'Sex', 'Sab', 'Dom']}
+                            months={['Janeiro', 'Fevereiro', 'Março', 'Abril',
+                            'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro',
+                            'Outubro', 'Novembro', 'Dezembro']}
+                            previousTitle="Anterior"
+                            nextTitle="Próximo"
+                            selectMonthTitle={`Selecionar o Mês em `}
+                            selectYearTitle="Selecionar o Ano"
+                            width={350}
+                            selectedDayColor={colors.red}
+                            selectedDayTextColor='#fff'
+                            textStyle={{
+                                fontSize: 14
+                            }}
+                            onDateChange={this.onDateChange}
+                        />
                     </View>
 
                     <View style={styles.footerSection}>
@@ -107,6 +104,7 @@ export default class App extends React.Component {
                             onPress={this.handleButton}
                         />
                     </View>
+
                  </View>
 
             </ImageBackground>
@@ -154,6 +152,8 @@ const styles = StyleSheet.create({
         padding: 5
     },
     calendar: {
+        backgroundColor: 'pink',
+        alignItems: 'center'
     },
     footerSection: {
         flex: .1,
