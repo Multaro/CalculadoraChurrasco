@@ -89,5 +89,17 @@ export default {
             'Talheres'
         ]
     },
+    drinks: {
+        types: [
+            'Água',
+            'Cachaça',
+            'Cerveja',
+            'Cervejas Especiais',
+            'Refrigerante',
+            'Suco',
+            'Vinho',
+            'Vodka'
+        ]
+    },
     next: 'PRÓXIMO'
 }
