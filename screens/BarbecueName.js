@@ -91,6 +91,7 @@ export default class App extends React.Component {
                             width={350}
                             selectedDayColor={colors.red}
                             selectedDayTextColor='#fff'
+                            dayShape='square'
                             textStyle={{
                                 fontSize: 14
                             }}
