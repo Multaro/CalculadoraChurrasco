@@ -106,6 +106,18 @@ class Data {
 
         return types;
     }
+    
+    generateDrinks() {
+        const drinks = strings.drinks.types.map((element, index) => {
+            return {
+                id: index,
+                type: element,
+                selected: this.drinks.some(drink => drink.label === element)
+            }
+        });
+
+        return drinks;
+    }
 }
 
 const data = new Data();

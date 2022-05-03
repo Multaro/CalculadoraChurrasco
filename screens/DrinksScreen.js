@@ -6,11 +6,45 @@ import TextApp from '../components/TextApp';
 import colors from '../utils/colors';
 import strings from '../utils/strings';
 import images from '../utils/images';
+import data from '../utils/data';
 
 import CardsSelection from '../components/CardsSelection';
 import TouchableOpacityApp from '../components/TouchableOpacityApp';
 
 export default class DrinksScreen extends React.Component {
+
+    addDrink = (drink, id) => {
+        const { drinks } = data;
+
+        drinks.forEach(addedDrink => {
+            if (addedDrink == drink) return;
+        });
+
+        data.drinks.push({
+            label: drink
+        });
+
+        console.log(data.drinks);
+    }
+
+    removeDrink = (drink, id) => {
+        const { drinks } = data;
+
+        let index = -1;
+        for (let i = 0, len = drinks.length; i < len; i++) {
+            if (drinks[i].label === drink) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index != -1) {
+            drinks.splice(index, 1);
+        }
+
+        data.drinks = drinks;
+    }
+
     render() {
         return (
             <View style={styles.background}>
@@ -22,16 +56,17 @@ export default class DrinksScreen extends React.Component {
                         resizeMode='contain'
                     />  
 
-                    <TextApp text='QUAIS BEBIDAS DESEJA SERVIR?'/>
-                    <Text>Para ter certeza do sucesso do seu churrasco, escolha as bebidas
-                        que não podem faltar e lembre de gelar bem antes de servir. Aprecie
-                        com moderação.</Text>
+                    <TextApp text={strings.drinks.title}/>
+                    <Text style={styles.text}>{strings.drinks.text}</Text>
                 </View>
 
-                <CardsSelection texts={strings.drinks} />
+                <CardsSelection
+                    texts={data.generateDrinks()}
+                    onSelect={this.addDrink}
+                    onUnselect={this.removeDrink}/>
 
                 <View style={styles.footerSection}>
-                    <TouchableOpacityApp text='PRÓXIMO' />
+                    <TouchableOpacityApp text={strings.next} />
                 </View>
             </View>
         );
@@ -59,6 +94,9 @@ const styles = StyleSheet.create({
         width: null,
         height: null,
         resizeMode: 'cover'
+    },
+    text: {
+        marginVertical: 1
     },
     footerSection: {
         flex: .1,

@@ -90,6 +90,10 @@ export default {
         ]
     },
     drinks: {
+        title: 'QUAIS BEBIDAS DESEJA SERVIR?',
+        text: 'Para ter certeza do sucesso do seu churrasco, escolha as bebidas que não podem '
+              + 'faltar e lembre de gelar bem antes de servir. Aprecie com moderação.'
+        ,
         types: [
             'Água',
             'Cachaça',
