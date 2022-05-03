@@ -9,6 +9,7 @@ import {
 import colors from '../utils/colors';
 import strings from '../utils/strings';
 import images from '../utils/images';
+import data from '../utils/data';
 
 import TextApp from '../components/TextApp';
 import CardsSelection from '../components/CardsSelection';
@@ -18,6 +19,14 @@ export default class SuppliesScreen extends React.Component {
     state = {
 
     };
+
+    addSupply = (supply, id) => {
+
+    }
+
+    removeSupply = (supply, id) => {
+
+    }
 
     render() {
 
@@ -30,9 +39,13 @@ export default class SuppliesScreen extends React.Component {
                 <View style={styles.background}>
                     <View style={styles.container}>
                         <TextApp text='NÃO ESQUEÇA DOS SUPRIMENTOS'/>
-                        <Text>Não precisa de firula, mas o básico é essencial. Os suprimentos garantem um churrasco de respeito. Selecione tudo aquilo que precisa:</Text>
+                        <Text style={styles.text}>Não precisa de firula, mas o básico é essencial. Os suprimentos garantem um churrasco de respeito. Selecione tudo aquilo que precisa:</Text>
                     </View>
-                    <CardsSelection texts={strings.supplies} />
+
+                    <CardsSelection 
+                        texts={data.generateSupplies()}
+                        onSelect={this.addSupply}
+                        onUnselect={this.removeSupply}/>
 
                     <View style={styles.footerSection}>
                         <TouchableOpacityApp text='PRÓXIMO ->' />
@@ -79,6 +92,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: '5%',
         flex: 1
+    },
+    text: {
+        fontFamily: 'Homenko'
     },
     footerSection: {
         flex: .1,

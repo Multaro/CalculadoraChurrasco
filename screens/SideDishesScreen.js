@@ -13,11 +13,28 @@ import TouchableOpacityApp from '../components/TouchableOpacityApp';
 import colors from '../utils/colors';
 import images from '../utils/images';
 import strings from '../utils/strings';
+import data from '../utils/data';
 
 export default class SideDishesScreen extends React.Component {
     state = {
 
     };
+
+    addSideDishe = (sideDishe, id) => {
+        const { sideDishes } = data;
+
+        sideDishes.forEach(addedsideDishe => {
+            if (addedsideDishe == sideDishe) return;
+        });
+
+        data.drinks.push({
+            label: drink
+        });
+    }
+
+    removeSideDishe = (sideDishe, id) => {
+        
+    }
 
     render() {
 
@@ -34,7 +51,10 @@ export default class SideDishesScreen extends React.Component {
                     
                     </View>
                     
-                    <CardsSelection texts={strings.sideDishes} />
+                    <CardsSelection 
+                        texts={data.generateSideDishes()}
+                        onSelect={this.addSideDishe}
+                        onUnselect={this.removeSideDishe}/>
                     
                     <View style={styles.footerSection}>
                         <TouchableOpacityApp
@@ -58,7 +78,6 @@ const styles = StyleSheet.create({
         borderLeftWidth: 2,
         borderRightColor: colors.red,
         borderLeftColor: colors.red
-
     },
     // Container tamanho da screen
     imageContainer: {

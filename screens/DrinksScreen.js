@@ -23,8 +23,6 @@ export default class DrinksScreen extends React.Component {
         data.drinks.push({
             label: drink
         });
-
-        console.log(data.drinks);
     }
 
     removeDrink = (drink, id) => {

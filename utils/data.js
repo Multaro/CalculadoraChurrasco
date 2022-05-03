@@ -106,7 +106,31 @@ class Data {
 
         return types;
     }
-    
+
+    generateSideDishes() {
+        const sideDishes = strings.sideDishes.types.map((element, index) => {
+            return {
+                id: index,
+                type: element,
+                selected: this.sideDishes.some(sideDishe => sideDishe.label === element)
+            }
+        });
+
+        return sideDishes;
+    }
+
+    generateSupplies() {
+        const supplies = strings.supplies.types.map((element, index) => {
+            return {
+                id: index,
+                type: element,
+                selected: this.supplies.some(supply => supply.label === element)
+            }
+        });
+
+        return supplies;
+    }
+
     generateDrinks() {
         const drinks = strings.drinks.types.map((element, index) => {
             return {
