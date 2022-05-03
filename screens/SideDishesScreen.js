@@ -27,7 +27,7 @@ export default class SideDishesScreen extends React.Component {
             if (addedsideDishe == sideDishe) return;
         });
 
-        data.drinks.push({
+        data.sideDishes.push({
             label: sideDishe
         });
     }
