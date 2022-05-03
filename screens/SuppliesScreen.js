@@ -21,11 +21,33 @@ export default class SuppliesScreen extends React.Component {
     };
 
     addSupply = (supply, id) => {
+        const { supplies } = data;
 
+        supplies.forEach(addedSupply => {
+            if (addedSupply == supply) return;
+        });
+
+        data.supplies.push({
+            label: supply
+        });
     }
 
     removeSupply = (supply, id) => {
+        const { supplies } = data;
 
+        let index = -1;
+        for (var i = 0, len = supplies.length; i < len; i++) {
+            if (supplies[i].label === supply) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index != -1) {
+            supplies.splice(index, 1);
+        }
+
+        data.supplies = supplies;
     }
 
     render() {
@@ -38,8 +60,8 @@ export default class SuppliesScreen extends React.Component {
             >
                 <View style={styles.background}>
                     <View style={styles.container}>
-                        <TextApp text='NÃO ESQUEÇA DOS SUPRIMENTOS'/>
-                        <Text style={styles.text}>Não precisa de firula, mas o básico é essencial. Os suprimentos garantem um churrasco de respeito. Selecione tudo aquilo que precisa:</Text>
+                        <TextApp text={strings.supplies.title}/>
+                        <Text style={styles.text}>{strings.supplies.text}</Text>
                     </View>
 
                     <CardsSelection 
@@ -48,7 +70,7 @@ export default class SuppliesScreen extends React.Component {
                         onUnselect={this.removeSupply}/>
 
                     <View style={styles.footerSection}>
-                        <TouchableOpacityApp text='PRÓXIMO ->' />
+                        <TouchableOpacityApp text={strings.next} />
                     </View>
                 </View>
             </ImageBackground>
@@ -94,7 +116,9 @@ const styles = StyleSheet.create({
         flex: 1
     },
     text: {
-        fontFamily: 'Homenko'
+        fontFamily: 'Homenko',
+        color: colors.grey,
+        lineHeight: 20
     },
     footerSection: {
         flex: .1,
