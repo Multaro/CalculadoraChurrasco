@@ -1,6 +1,6 @@
 import strings from './strings';
 
-export default class Data {
+class Data {
     constructor() {
         this.event = {
             name: '',
@@ -107,3 +107,7 @@ export default class Data {
         return types;
     }
 }
+
+const data = new Data();
+
+export default data;

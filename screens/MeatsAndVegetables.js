@@ -10,9 +10,7 @@ import {
 import images from '../utils/images';
 import colors from '../utils/colors';
 import strings from '../utils/strings';
-import Dados from '../utils/data';
-
-const data = new Dados();
+import data from '../utils/data';
 
 import TextApp from '../components/TextApp';
 import CardsSelection from '../components/CardsSelection';
