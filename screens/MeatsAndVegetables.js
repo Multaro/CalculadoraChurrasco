@@ -3,12 +3,16 @@ import {
     View,
     ImageBackground,
     StyleSheet,
-    TouchableOpacity
+    TouchableOpacity,
+    Text
 } from 'react-native';
 
 import images from '../utils/images';
 import colors from '../utils/colors';
-import strings from '../utils/strings'
+import strings from '../utils/strings';
+import Dados from '../utils/data';
+
+const data = new Dados();
 
 import TextApp from '../components/TextApp';
 import CardsSelection from '../components/CardsSelection';
@@ -41,6 +45,42 @@ export default class MeatsAndVegetables extends React.Component {
         this.setState({ meats });
     }
 
+    addMeat = (food, type) => {
+
+        const { meats } = data;
+        
+        for (const meat in meats) {
+            if (Object.hasOwnProperty.call(meats, meat)) {
+                if (meat.label === food && meat.type == type) {
+                    return;
+                }
+            }
+        }
+
+        data.meats.push({
+            label: food,
+            type
+        });
+    }
+
+    removeMeat = (meat, type) => {
+        const { meats } = data;
+
+        let index = -1;
+        for (var i = 0, len = meats.length; i < len; i++) {
+            if (meats[i].label === meat && meats[i].type == type) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index != -1) {
+            meats.splice(index, 1);
+        }
+
+        data.meats = meats;
+    }
+    
     render() {
         const { 
             beef,
@@ -114,23 +154,38 @@ export default class MeatsAndVegetables extends React.Component {
                     </View>
 
                     { beef && (
-                        <CardsSelection texts={meats.beef} />
+                        <CardsSelection
+                            texts={data.generateBeefs()}
+                            onSelect={this.addMeat}
+                            onUnselect={this.removeMeat}/>
                     )}
 
                     { pig && (
-                        <CardsSelection texts={meats.pig} />
+                        <CardsSelection 
+                            texts={data.generatePigs()}
+                            onSelect={this.addMeat}
+                            onUnselect={this.removeMeat}/>
                     )}
 
                     { sheep && (
-                        <CardsSelection texts={meats.sheep} />
+                        <CardsSelection 
+                        texts={data.generateSheeps()}
+                        onSelect={this.addMeat}
+                        onUnselect={this.removeMeat}/>
                     )}
 
                     { chicken && (
-                        <CardsSelection texts={meats.chicken} />
+                        <CardsSelection 
+                        texts={data.generateChickens()}
+                        onSelect={this.addMeat}
+                        onUnselect={this.removeMeat}/>
                     )}
 
                     { vegetables && (
-                        <CardsSelection texts={meats.vegetables} />
+                        <CardsSelection 
+                            texts={data.generateVegetables()}
+                            onSelect={this.addMeat}
+                            onUnselect={this.removeMeat}/>
                     )}
 
                     <View style={styles.nextButton}>

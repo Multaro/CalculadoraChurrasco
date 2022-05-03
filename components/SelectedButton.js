@@ -7,56 +7,20 @@ import {
 } from 'react-native';
 
 import colors from '../utils/colors';
-import data from '../utils/data';
 
-export default function SelectedButton ({text, id, onSelect, onUnselect, alreadySelected}) {
+export default function SelectedButton ({id, text, onSelect, onUnselect, alreadySelected}) {
 
     const [selected, changeSelected] = useState(alreadySelected);
-
-    const addFood = (food) => {
-        const { meats } = data;
-        
-        for (const meat in meats) {
-            if (Object.hasOwnProperty.call(meats, meat)) {
-                if (meat.label == food) {
-                    return;
-                }
-            }
-        }
-
-        data.meats.push({
-            label: food,
-            type: id
-        });
-    }
-
-    const removeFood = (food) => {
-        const { meats } = data;
-
-        let index = -1;
-        for (var i = 0, len = meats.length; i < len; i++) {
-            if (meats[i].label === food && meats[i].type == id) {
-                index = i;
-                break;
-            }
-        }
-
-        if (index != -1) {
-            meats.splice(index, 1);
-        }
-
-        data.meats = meats;
-    }
     
     const handleSelected = meats => {
         if (!selected) {
             changeSelected(true);
 
-            addFood(meats)
+            onSelect(meats, id)
         } else {
             changeSelected(false);
 
-            removeFood(meats)
+            onUnselect(meats, id)
         }
     };
     

@@ -1,32 +1,25 @@
 import React from 'react';
 import { 
     FlatList,
-    StyleSheet
+    StyleSheet,
+    Text
 } from 'react-native';
-
-import data from '../utils/data'
 
 import SelectedButton from './SelectedButton';
 
-const meatAlreadySelected = (element, id) => {
-    return data.meats.some(meat => meat.label === element && meat.type === id);
-} 
-
-export default function CardsSelection ({texts}) {
-    const types = texts.types.map((element, c) => {
-        return {...element, id: c, type: element, selected: meatAlreadySelected(element, texts.id)}
-    });
-
+export default function CardsSelection (texts = { key, id, type, selected, onSelect, onUnselect}) {
     return (
         <FlatList
             style={styles.listStyle}
             contentContainerStyle={styles.contentContainer}
             numColumns={2}
-            data={types}
+            data={texts.texts}
             keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <SelectedButton 
+            renderItem={({item}) => <SelectedButton 
+                id={item.key}
                 text={item.type}
-                meatType={texts.id}
+                onSelect={texts.onSelect}
+                onUnselect={texts.onUnselect}
                 alreadySelected={item.selected}
             />}
         />
