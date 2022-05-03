@@ -12,6 +12,7 @@ import TouchableOpacityApp from '../components/TouchableOpacityApp';
 
 import colors from '../utils/colors';
 import images from '../utils/images';
+import data from '../utils/data';
 
 export default class App extends React.Component {
     state = {
@@ -32,6 +33,9 @@ export default class App extends React.Component {
 
     handleBarbecueName = text => {
         const { barbecue_name } = this.state;
+
+        data.setBarbecueName(text);
+
         let newText = '';
 
         if (text.length == 14) {
@@ -48,7 +52,10 @@ export default class App extends React.Component {
 
     onDateChange = (date, type) => {
         if (type === 'END_DATE') {
+            data.setEndDate(date);
         } else {
+            data.setStartDate(date);
+            data.setEndDate(null);
         }
     }
 

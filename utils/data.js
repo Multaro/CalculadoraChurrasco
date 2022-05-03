@@ -4,7 +4,8 @@ class Data {
     constructor() {
         this.event = {
             name: '',
-            date: ''
+            startDate: '',
+            endDate: ''
         };
         this.guests = {
             men: 0,
@@ -33,6 +34,32 @@ class Data {
                 label: ''
             }
         ];
+    }
+
+    getBarbecueName() {
+        if (this.event.name.length > 20) return this.event.name.substring(0, 19) + '...';
+
+        return this.event.name;
+    }
+
+    setBarbecueName(name) {
+        if (name.length > 80) return;
+
+        this.event.name = name;
+    }
+
+    setStartDate(date) {
+        if (date == null) return;
+
+        this.event.startDate = date.calendar();
+    }
+
+    setEndDate(date) {
+        this.event.endDate = date == null ? null : date.calendar();
+    }
+
+    getEventDate() {
+
     }
 
     addMen() {
