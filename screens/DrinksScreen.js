@@ -1,5 +1,11 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import {
+    Text,
+    View,
+    ImageBackground,
+    StyleSheet,
+    Image
+} from 'react-native';
 
 import TextApp from '../components/TextApp';
 
@@ -45,28 +51,34 @@ export default class DrinksScreen extends React.Component {
 
     render() {
         return (
-            <View style={styles.background}>
-                <View style={styles.containerSection}>
-                    <Image
-                        style={{width: '60px', height: '60px'}}
-                        source={images.GlassIcon}
-                        imageStyle={styles.image}
-                        resizeMode='contain'
-                    />  
+            <ImageBackground
+                source={images.background}
+                style={styles.imageContainer}
+                imageStyle={styles.image}
+            >
+                <View style={styles.background}>
+                    <View style={styles.containerSection}>
+                        <Image
+                            style={{width: '60px', height: '60px'}}
+                            source={images.GlassIcon}
+                            imageStyle={styles.image}
+                            resizeMode='contain'
+                        />  
 
-                    <TextApp text={strings.drinks.title}/>
-                    <Text style={styles.text}>{strings.drinks.text}</Text>
+                        <TextApp text={strings.drinks.title}/>
+                        <Text style={styles.text}>{strings.drinks.text}</Text>
+                    </View>
+
+                    <CardsSelection
+                        texts={data.generateDrinks()}
+                        onSelect={this.addDrink}
+                        onUnselect={this.removeDrink}/>
+
+                    <View style={styles.footerSection}>
+                        <TouchableOpacityApp text={strings.next} />
+                    </View>
                 </View>
-
-                <CardsSelection
-                    texts={data.generateDrinks()}
-                    onSelect={this.addDrink}
-                    onUnselect={this.removeDrink}/>
-
-                <View style={styles.footerSection}>
-                    <TouchableOpacityApp text={strings.next} />
-                </View>
-            </View>
+            </ImageBackground>
         );
     }
 };
@@ -74,12 +86,24 @@ export default class DrinksScreen extends React.Component {
 const styles = StyleSheet.create({
     background: {
         flex: 1,
+        alignItems: 'center',
         paddingVertical: 40,
         backgroundColor: '#fff',
         borderRightWidth: 2,
         borderLeftWidth: 2,
         borderRightColor: colors.red,
-        borderLeftColor: colors.render
+        borderLeftColor: colors.red
+    },
+    imageContainer: {
+        flex: 1,
+        backgroundColor: 'rgba(1, 1, 1, .1)',
+        paddingHorizontal: 20
+    },
+    image: {
+        flex: 1,
+        width: null,
+        height: null,
+        resizeMode: 'cover'
     },
     containerSection: {
         flex: 1,
@@ -94,7 +118,8 @@ const styles = StyleSheet.create({
         resizeMode: 'cover'
     },
     text: {
-        marginVertical: 1
+        marginVertical: 1,
+        color: colors.grey
     },
     footerSection: {
         flex: .1,
