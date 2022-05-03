@@ -28,12 +28,26 @@ export default class SideDishesScreen extends React.Component {
         });
 
         data.drinks.push({
-            label: drink
+            label: sideDishe
         });
     }
 
     removeSideDishe = (sideDishe, id) => {
-        
+        const { sideDishes } = data;
+
+        let index = -1;
+        for (var i = 0, len = sideDishes.length; i < len; i++) {
+            if (sideDishes[i].label === sideDishe) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index != -1) {
+            sideDishes.splice(index, 1);
+        }
+
+        data.sideDishes = sideDishes;
     }
 
     render() {
@@ -46,9 +60,8 @@ export default class SideDishesScreen extends React.Component {
             >
                 <View style={styles.background}>
                     <View style={styles.container}>
-                        <TextApp text='VOCÊ PENSOU EM QUAIS ACOMPANHAMENTOS?' /> 
-                        <Text style={{color: colors.grey}}>Descobrir novos sabores é facil quando você pode contar com alguns acompanhamentos. Assim como a carne e os vegetais, eles são importantes para agradar os convidados e tornar o momento ainda mais especial.</Text>
-                    
+                        <TextApp text={strings.sideDishes.title} /> 
+                        <Text style={{color: colors.grey}}>{strings.sideDishes.text}</Text>
                     </View>
                     
                     <CardsSelection 
@@ -58,7 +71,7 @@ export default class SideDishesScreen extends React.Component {
                     
                     <View style={styles.footerSection}>
                         <TouchableOpacityApp
-                            text={'PRÓXIMO ->'}
+                            text={strings.next}
                         />
                     </View>
                 </View>

@@ -68,6 +68,11 @@ export default {
         }
     },
     sideDishes: {
+        title: 'VOCÊ PENSOU EM QUAIS ACOMPANHAMENTOS?',
+        text: 'Descobrir novos sabores é facil quando você pode contar com alguns acompanhamentos. '
+            + 'Assim como a carne e os vegetais, eles são importantes para agradar os convidados e '
+            + 'tornar o momento ainda mais especial.'
+        ,
         types: [
             'Arroz',
             'Farofa',
