@@ -83,6 +83,10 @@ export default {
         ]
     },
     supplies: {
+        title: 'NÃO ESQUEÇA DOS SUPRIMENTOS',
+        text: 'Não precisa de firula, mas o básico é essencial. Os suprimentos garantem um churrasco '
+            + 'de respeito. Selecione tudo aquilo que precisa:'
+        ,
         types: [
             'Carvão',
             'Copos',
