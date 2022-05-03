@@ -13,6 +13,8 @@ import PersonTypes from '../components/PersonTypes';
 
 import colors from '../utils/colors';
 import images from '../utils/images';
+import data from '../utils/data';
+import strings from '../utils/strings';
 
 export default class BarbecuePersons extends React.Component {
     state = {
@@ -40,6 +42,8 @@ export default class BarbecuePersons extends React.Component {
         const { countMens } = this.state;
         const prevCount = countMens + 1;
         this.setState({ countMens: prevCount }, this.handleCountTotal(true));
+
+        data.addMen();
     };
 
     handleSubButtonMens = () => {
@@ -47,12 +51,16 @@ export default class BarbecuePersons extends React.Component {
         if (countMens === 0) return;
         const prevCount = countMens - 1;
         this.setState({ countMens: prevCount }, this.handleCountTotal(false));
+
+        data.subMen();
     };
 
     handleSumButtonWomens = () => {
         const { countWomens } = this.state;
         const prevCount = countWomens + 1;
         this.setState({ countWomens: prevCount }, this.handleCountTotal(true));
+
+        data.addWomen();
     };
 
     handleSubButtonWomens = () => {
@@ -60,12 +68,16 @@ export default class BarbecuePersons extends React.Component {
         if (countWomens === 0) return;
         const prevCount = countWomens - 1;
         this.setState({ countWomens: prevCount }, this.handleCountTotal(false));
+
+        data.subWomen();
     };
 
     handleSumButtonChilds = () => {
         const { countChilds } = this.state;
         const prevCount = countChilds + 1;
         this.setState({ countChilds: prevCount }, this.handleCountTotal(true));
+
+        data.addChildren();
     };
 
     handleSubButtonChilds = () => {
@@ -73,6 +85,8 @@ export default class BarbecuePersons extends React.Component {
         if (countChilds === 0) return;
         const prevCount = countChilds - 1;
         this.setState({ countChilds: prevCount }, this.handleCountTotal(false));
+
+        data.subChildren();
     };
 
     handleSumButtonVegan = () => {
@@ -80,6 +94,8 @@ export default class BarbecuePersons extends React.Component {
         if (countVegan >= countTotal) return;
         const prevCount = countVegan + 1;
         this.setState({ countVegan: prevCount });
+
+        data.addVegetarian();
     };
 
     handleSubButtonVegan = () => {
@@ -87,6 +103,8 @@ export default class BarbecuePersons extends React.Component {
         if (countVegan === 0) return;
         const prevTotal = countVegan - 1;
         this.setState({ countVegan: prevTotal });
+
+        data.subVegetarian();
     };
     
     render() {
@@ -107,7 +125,7 @@ export default class BarbecuePersons extends React.Component {
                 <View style={styles.background}>
                     <View style={styles.containerSection}>
                         <Image source={images.reunionIcon}/>
-                        <TextApp text='QUANTAS PESSOAS VÃO AO CHURRAS?' />
+                        <TextApp text={`QUANTAS PESSOAS VÃO AO ${'CHURRAS TITLE'}?`} />
 
                         <View style={styles.personSection}>
                             <PersonTypes 
@@ -159,7 +177,7 @@ export default class BarbecuePersons extends React.Component {
 
                     <View style={styles.footerSection}>
                         <TouchableOpacityApp
-                            text='PRÓXIMO ->'
+                            text={strings.next}
                             onPress={() => console.log('Debbuger')}
                         />
                     </View>

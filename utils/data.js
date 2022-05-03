@@ -35,6 +35,48 @@ class Data {
         ];
     }
 
+    addMen() {
+        this.guests.men = this.guests.men + 1;
+    }
+
+    subMen() {
+        if (this.guests.men == 0) return;
+
+        this.guests.men = this.guests.men - 1;
+    }
+
+    addWomen() {
+        this.guests.women = this.guests.women + 1;
+    }
+
+    subWomen() {
+        if (this.guests.women == 0) return;
+
+        this.guests.women = this.guests.women - 1;
+    }
+
+    addChildren() {
+        this.guests.children = this.guests.children + 1;
+    }
+
+    subChildren() {
+        if (this.guests.children == 0) return;
+
+        this.guests.children = this.guests.children - 1;
+    }
+
+    addVegetarian() {
+        if (this.guests.vegs >= this.guests.children + this.guests.men + this.guests.women) return;
+
+        this.guests.vegs = this.guests.vegs + 1;
+    }
+
+    subVegetarian() {
+        if (this.guests.vegs == 0) return;
+
+        this.guests.vegs = this.guests.vegs - 1;
+    }
+
     meatAlreadySelected = (element, id) => this.meats.some(meat => meat.label === element && meat.type === id);
 
     generateBeefs() {
