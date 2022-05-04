@@ -93,7 +93,7 @@ class Data {
     }
 
     addVegetarian() {
-        if (this.guests.vegs >= this.guests.children + this.guests.men + this.guests.women) return;
+        if (this.guests.vegs >= this.getTotalPeople()) return;
 
         this.guests.vegs = this.guests.vegs + 1;
     }
@@ -102,6 +102,10 @@ class Data {
         if (this.guests.vegs == 0) return;
 
         this.guests.vegs = this.guests.vegs - 1;
+    }
+
+    getTotalPeople() {
+        return this.guests.men + this.guests.women + this.guests.children;
     }
 
     meatAlreadySelected = (element, id) => this.meats.some(meat => meat.label === element && meat.type === id);

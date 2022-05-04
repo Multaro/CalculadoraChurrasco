@@ -18,11 +18,11 @@ import strings from '../utils/strings';
 
 export default class BarbecuePersons extends React.Component {
     state = {
-        countMens: 0,
-        countWomens: 0,
-        countChilds: 0,
-        countVegan: 0,
-        countTotal: 0
+        countMens: data.guests.men,
+        countWomens: data.guests.women,
+        countChilds: data.guests.children,
+        countVegan: data.guests.vegs,
+        countTotal: data.getTotalPeople()
     };
 
     handleCountTotal = bool => {
