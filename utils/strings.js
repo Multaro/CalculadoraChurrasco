@@ -114,5 +114,8 @@ export default {
             'Vodka'
         ]
     },
-    next: 'PRÓXIMO'
+    next: 'PRÓXIMO',
+    result: {
+        title: 'TUDO PRONTO PARA O CHURRASCO '
+    }
 }
