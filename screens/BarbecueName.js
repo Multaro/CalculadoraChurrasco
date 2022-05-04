@@ -9,6 +9,7 @@ import CalendarPicker from 'react-native-calendar-picker/CalendarPicker';
 
 import TextApp from '../components/TextApp';
 import TouchableOpacityApp from '../components/TouchableOpacityApp';
+import ModalDataInvalid from '../components/ModalDataInvalid';
 
 import colors from '../utils/colors';
 import images from '../utils/images';
@@ -16,20 +17,40 @@ import data from '../utils/data';
 
 export default class App extends React.Component {
     state = {
-        cont: 0,
-        barbecue_name: ''
+        barbecue_name: '',
+        modalVisible: false,
+        fieldNotFullfiled: ''
     };
+
+    setFieldNotFullfiled = (field) => {
+        this.setState({ fieldNotFullfiled: field });
+    }
+
+    setModalVisible = (visible) => {
+        this.setState({ modalVisible: visible });
+    }
 
     componentDidMount() {
         this.onDateChange = this.onDateChange.bind(this);
     }
 
     handleButton = () => {
-        const { navigation } = this.props;
-        const { cont } = this.state;
-        const previousCont = cont;
+        if (!this.state.barbecue_name || !data.event.startDate) {
+            let field = '';
 
-        this.setState({ cont: previousCont + 1 });
+            if (!this.state.barbecue_name) {
+                field = 'nome do churrasco';
+            } else {
+                field = 'data do churrasco';
+            }
+
+            this.setFieldNotFullfiled(field);
+            this.setModalVisible(true);
+            return;
+        }
+
+        const { navigation } = this.props;
+
         navigation.navigate('Pessoas');
     };
 
@@ -62,7 +83,7 @@ export default class App extends React.Component {
     }
 
     render() {
-        const { barbecue_name } = this.state;
+        const { barbecue_name, modalVisible, fieldNotFullfiled } = this.state;
         const maxDate = new Date(2023, 12, 31);
 
         return(
@@ -73,6 +94,13 @@ export default class App extends React.Component {
             >
 
                 <View style={styles.background}>
+                    <ModalDataInvalid
+                        animationType='slide'
+                        visible={modalVisible}
+                        onModalClose={this.setModalVisible}
+                        fieldNotFullfiled={fieldNotFullfiled}
+                    />
+
                     <View style={styles.containerSection}>
                         <TextApp text='Primeiro dê um nome ao seu churrasco:'/>
                         <TextInput
@@ -170,4 +198,3 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end'
     }
 });
-
