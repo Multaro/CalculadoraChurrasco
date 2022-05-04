@@ -120,7 +120,6 @@ const styles = StyleSheet.create({
         flex: 1
     },
     text: {
-        fontFamily: 'Homenko',
         color: colors.grey,
         lineHeight: 20
     },
