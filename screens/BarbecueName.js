@@ -35,15 +35,19 @@ export default class App extends React.Component {
     }
 
     handleButton = () => {
-        if (!this.state.barbecue_name || !data.event.startDate) {
-            let field = '';
+        let field = '';
 
-            if (!this.state.barbecue_name) {
-                field = 'nome do churrasco';
-            } else {
-                field = 'data do churrasco';
-            }
+        if (!this.state.barbecue_name) {
+            field = 'nome do churrasco';
+        }
+        
+        if (!data.event.endDate) {
+            field = data.event.startDate
+                ? 'término da data do churrasco'
+                : 'data do churrasco';
+        }
 
+        if (field) {
             this.setFieldNotFullfiled(field);
             this.setModalVisible(true);
             return;
