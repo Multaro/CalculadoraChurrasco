@@ -125,7 +125,11 @@ export default class BarbecuePersons extends React.Component {
             >
                 <View style={styles.background}>
                     <View style={styles.containerSection}>
-                        <Image source={images.reunionIcon}/>
+                        <Image 
+                            //style={{width: '100%', height: '100%'}}
+                            source={images.reunionIcon}
+                            imageStyle={styles.image}
+                        />
                         <TextApp text={`QUANTAS PESSOAS VÃO AO ${data.getBarbecueName()}?`} />
 
                         <View style={styles.personSection}>

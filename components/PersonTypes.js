@@ -16,7 +16,11 @@ import PropTypes from 'prop-types';
 export default function PersonTypes({type, onSum, onSub, count, typeIcon}) {
     return (
         <View style={styles.container}>
-            <Image style={{width: 60, height: 60}} source={typeIcon} />
+            <Image 
+                //style={{width: '100%', height: '100%'}}
+                source={typeIcon} 
+                imageStyle={styles.Image}
+            />
             <TextApp text={type} />
             <TouchableOpacity 
                 style={styles.buttonSection}
@@ -76,5 +80,12 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 20,
         color: 'white'
+       
+    },
+    image: {
+        flex: 1,
+        width: null,
+        height: null,
+        resizeMode: 'cover'
     }
 });
