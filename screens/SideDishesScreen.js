@@ -73,7 +73,7 @@ export default class SideDishesScreen extends React.Component {
                     <View style={styles.footerSection}>
                         <TouchableOpacityApp
                             text={strings.next}
-                            onPress={navigation.navigate('Suprimentos')}
+                            onPress={() => navigation.navigate('Suprimentos')}
                         />
                     </View>
                 </View>

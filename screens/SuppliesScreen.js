@@ -73,7 +73,7 @@ export default class SuppliesScreen extends React.Component {
                     <View style={styles.footerSection}>
                         <TouchableOpacityApp 
                             text={strings.next}
-                            onPress={navigation.navigate('Bebidas')}
+                            onPress={() => navigation.navigate('Bebidas')}
                         />
                     </View>
                 </View>

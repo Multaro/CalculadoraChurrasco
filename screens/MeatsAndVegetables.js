@@ -189,7 +189,7 @@ export default class MeatsAndVegetables extends React.Component {
                     <View style={styles.nextButton}>
                         <TouchableOpacityApp 
                             text={strings.next}
-                            onPress={navigation.navigate('Acompanhamentos')}
+                            onPress={() => navigation.navigate('Acompanhamentos')}
                         />
                     </View>
                 </View>
