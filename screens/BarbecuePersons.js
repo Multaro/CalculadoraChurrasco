@@ -179,7 +179,7 @@ export default class BarbecuePersons extends React.Component {
                     <View style={styles.footerSection}>
                         <TouchableOpacityApp
                             text={strings.next}
-                            onPress={() => navigation.navigate('Meats')}
+                            onPress={() => navigation.navigate('Carnes')}
                         />
                     </View>
                 </View>

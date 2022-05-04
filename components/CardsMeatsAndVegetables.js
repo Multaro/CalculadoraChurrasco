@@ -42,10 +42,10 @@ const styles = StyleSheet.create({
         margin: '1%'
     },
     image: {
-        flex: 1,
-        width: null,
-        height: null,
-        resizeMode: 'cover'
+//        flex: 1,
+        width: 60,
+        height: 60,
+  //      resizeMode: 'cover'
     },
     label: {
         fontSize: 14,

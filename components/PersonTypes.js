@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
 export default function PersonTypes({type, onSum, onSub, count, typeIcon}) {
     return (
         <View style={styles.container}>
-            <Image source={typeIcon} />
+            <Image style={{width: 60, height: 60}} source={typeIcon} />
             <TextApp text={type} />
             <TouchableOpacity 
                 style={styles.buttonSection}

@@ -59,7 +59,7 @@ export default class DrinksScreen extends React.Component {
                 <View style={styles.background}>
                     <View style={styles.containerSection}>
                         <Image
-                            style={{width: '60px', height: '60px'}}
+                            style={{width: 60, height: 60}}
                             source={images.GlassIcon}
                             imageStyle={styles.image}
                             resizeMode='contain'
@@ -110,12 +110,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         alignItems: 'center',
         padding: 5
-    },
-    image: {
-        flex: 1,
-        width: null,
-        height: null,
-        resizeMode: 'cover'
     },
     text: {
         marginVertical: 1,
