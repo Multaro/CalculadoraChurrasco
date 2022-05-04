@@ -19,7 +19,8 @@ export default class App extends React.Component {
     state = {
         barbecue_name: '',
         modalVisible: false,
-        fieldNotFullfiled: ''
+        fieldNotFullfiled: '',
+        screenWidth: window.screen.width
     };
 
     setFieldNotFullfiled = (field) => {
@@ -37,14 +38,14 @@ export default class App extends React.Component {
     handleButton = () => {
         let field = '';
 
-        if (!this.state.barbecue_name) {
-            field = 'nome do churrasco';
-        }
-        
-        if (!data.event.endDate) {
-            field = data.event.startDate
-                ? 'término da data do churrasco'
-                : 'data do churrasco';
+        if (!this.state.barbecue_name || !data.event.endDate) {
+            if (!this.state.barbecue_name) {
+                field = 'nome do churrasco';
+            } else {
+                field = data.event.startDate
+                    ? 'término da data do churrasco'
+                    : 'data do churrasco';
+            }
         }
 
         if (field) {
@@ -87,7 +88,13 @@ export default class App extends React.Component {
     }
 
     render() {
-        const { barbecue_name, modalVisible, fieldNotFullfiled } = this.state;
+        const {
+            barbecue_name,
+            modalVisible,
+            fieldNotFullfiled,
+            screenWidth
+        } = this.state;
+        
         const maxDate = new Date(2023, 12, 31);
 
         return(
@@ -128,7 +135,7 @@ export default class App extends React.Component {
                             nextTitle="Próximo"
                             selectMonthTitle={`Selecionar o Mês em `}
                             selectYearTitle="Selecionar o Ano"
-                            width={350}
+                            width={screenWidth - 50}
                             selectedDayColor={colors.red}
                             selectedDayTextColor='#fff'
                             dayShape='square'
