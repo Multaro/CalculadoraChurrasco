@@ -61,7 +61,7 @@ export default class DrinksScreen extends React.Component {
                 <View style={styles.background}>
                     <View style={styles.containerSection}>
                         <Image
-                            style={{width: '100%', height: '100%'}}
+                            style={{width: 60, height: 60}}
                             source={images.GlassIcon}
                             imageStyle={styles.image}
                             resizeMode='contain'
