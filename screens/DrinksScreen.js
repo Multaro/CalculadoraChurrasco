@@ -50,6 +50,8 @@ export default class DrinksScreen extends React.Component {
     }
 
     render() {
+        const { navigation } = this.props;
+
         return (
             <ImageBackground
                 source={images.background}
@@ -59,7 +61,7 @@ export default class DrinksScreen extends React.Component {
                 <View style={styles.background}>
                     <View style={styles.containerSection}>
                         <Image
-                            style={{width: 60, height: 60}}
+                            style={{width: '100%', height: '100%'}}
                             source={images.GlassIcon}
                             imageStyle={styles.image}
                             resizeMode='contain'
@@ -75,7 +77,10 @@ export default class DrinksScreen extends React.Component {
                         onUnselect={this.removeDrink}/>
 
                     <View style={styles.footerSection}>
-                        <TouchableOpacityApp text={strings.next} />
+                        <TouchableOpacityApp 
+                            text={strings.next} 
+                            onPress={() => navigation.navigate('Resultado')}
+                        />
                     </View>
                 </View>
             </ImageBackground>
