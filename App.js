@@ -18,7 +18,7 @@ export default function App() {
             <Stack.Navigator>
                 <Stack.Screen name='Churrasco' component={BarbecueName} />
                 <Stack.Screen name='Pessoas' component={BarbecuePersons} />
-                <Stack.Screen name='Meats' component={MeatsAndVegetables} />
+                <Stack.Screen name='Carnes e Vegetais' component={MeatsAndVegetables} />
                 <Stack.Screen name='Acompanhamentos' component={SideDishesScreen} />
                 <Stack.Screen name='Suprimentos' component={SuppliesScreen} />
                 <Stack.Screen name='Bebidas' component={DrinksScreen} />

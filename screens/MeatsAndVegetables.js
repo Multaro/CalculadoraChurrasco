@@ -232,7 +232,8 @@ const styles = StyleSheet.create({
         //width: '40%',
     },
     nextButton: {
+        flex: .1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'flex-end'
     }
 });
