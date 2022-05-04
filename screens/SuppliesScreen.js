@@ -51,6 +51,7 @@ export default class SuppliesScreen extends React.Component {
     }
 
     render() {
+        const { navigation } = this.props;
 
         return(
             <ImageBackground
@@ -70,7 +71,10 @@ export default class SuppliesScreen extends React.Component {
                         onUnselect={this.removeSupply}/>
 
                     <View style={styles.footerSection}>
-                        <TouchableOpacityApp text={strings.next} />
+                        <TouchableOpacityApp 
+                            text={strings.next}
+                            onPress={navigation.navigate('Bebidas')}
+                        />
                     </View>
                 </View>
             </ImageBackground>

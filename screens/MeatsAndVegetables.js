@@ -87,7 +87,7 @@ export default class MeatsAndVegetables extends React.Component {
             chicken,
             vegetables
         } = this.state.meats;
-
+        const { navigation } = this.props;
         const { meats } = strings;
 
         return (
@@ -187,7 +187,10 @@ export default class MeatsAndVegetables extends React.Component {
                     )}
 
                     <View style={styles.nextButton}>
-                        <TouchableOpacityApp text={strings.next}/>
+                        <TouchableOpacityApp 
+                            text={strings.next}
+                            onPress={navigation.navigate('Acompanhamentos')}
+                        />
                     </View>
                 </View>
             </ImageBackground>

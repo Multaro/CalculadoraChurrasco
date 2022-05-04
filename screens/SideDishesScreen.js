@@ -51,6 +51,7 @@ export default class SideDishesScreen extends React.Component {
     }
 
     render() {
+        const { navigation } = this.props;
 
         return(
             <ImageBackground
@@ -72,6 +73,7 @@ export default class SideDishesScreen extends React.Component {
                     <View style={styles.footerSection}>
                         <TouchableOpacityApp
                             text={strings.next}
+                            onPress={navigation.navigate('Suprimentos')}
                         />
                     </View>
                 </View>

@@ -25,10 +25,12 @@ export default class App extends React.Component {
     }
 
     handleButton = () => {
+        const { navigation } = this.props;
         const { cont } = this.state;
         const previousCont = cont;
 
         this.setState({ cont: previousCont + 1 });
+        navigation.navigate('Pessoas');
     };
 
     handleBarbecueName = text => {
@@ -61,7 +63,6 @@ export default class App extends React.Component {
 
     render() {
         const { barbecue_name } = this.state;
-
         const maxDate = new Date(2023, 12, 31);
 
         return(

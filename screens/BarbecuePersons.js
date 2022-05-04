@@ -115,6 +115,7 @@ export default class BarbecuePersons extends React.Component {
             countVegan,
             countTotal
         } = this.state;
+        const { navigation } = this.props;
 
         return(
             <ImageBackground
@@ -178,7 +179,7 @@ export default class BarbecuePersons extends React.Component {
                     <View style={styles.footerSection}>
                         <TouchableOpacityApp
                             text={strings.next}
-                            onPress={() => console.log('Debbuger')}
+                            onPress={() => navigation.navigate('Carnes e Vegatais')}
                         />
                     </View>
                 </View>
