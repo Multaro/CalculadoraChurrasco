@@ -39,12 +39,14 @@ export default class App extends React.Component {
         let field = '';
 
         if (!this.state.barbecue_name || !data.event.endDate) {
-            if (!this.state.barbecue_name) {
-                field = 'nome do churrasco';
-            } else {
+            if (!this.state.barbecue_name && !data.event.endDate) {
+                field = 'o nome e a data do churrasco';
+            } else if (!this.state.barbecue_name) {
+                field = 'o nome do churrasco';  
+            } else if (!data.event.endDate) {
                 field = data.event.startDate
-                    ? 'término da data do churrasco'
-                    : 'data do churrasco';
+                    ? 'a data de término do churrasco'
+                    : 'a data do churrasco';
             }
         }
 
@@ -94,7 +96,7 @@ export default class App extends React.Component {
             fieldNotFullfiled,
             screenWidth
         } = this.state;
-        
+
         const maxDate = new Date(2023, 12, 31);
 
         return(

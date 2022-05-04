@@ -19,7 +19,7 @@ function ModalDataInvalid({animationType, visible, onModalClose, fieldNotFullfil
         >
             <View style={modalStyles.centeredView}>
                 <View style={modalStyles.modalView}>
-                    <Text style={modalStyles.modalText}>Preencha o {fieldNotFullfiled}.</Text>
+                    <Text style={modalStyles.modalText}>Preencha {fieldNotFullfiled}.</Text>
                     <Pressable
                         style={[modalStyles.button, modalStyles.buttonClose]}
                         onPress={() => onModalClose(!visible)}
