@@ -10,6 +10,7 @@ import {
 import TextApp from '../components/TextApp';
 import TouchableOpacityApp from '../components/TouchableOpacityApp';
 import PersonTypes from '../components/PersonTypes';
+import ModalDataInvalid from '../components/ModalDataInvalid';
 
 import colors from '../utils/colors';
 import images from '../utils/images';
@@ -22,8 +23,14 @@ export default class BarbecuePersons extends React.Component {
         countWomens: data.guests.women,
         countChilds: data.guests.children,
         countVegan: data.guests.vegs,
-        countTotal: data.getTotalPeople()
+        countTotal: data.getTotalPeople(),
+        modalVisible: false,
+        fieldNotFullfiled: ''
     };
+
+    setModalVisible = (visible) => {
+        this.setState({ modalVisible: visible });
+    }
 
     handleCountTotal = bool => {
         const { countTotal } = this.state;
@@ -106,6 +113,22 @@ export default class BarbecuePersons extends React.Component {
 
         data.subVegetarian();
     };
+
+    handleNextButton = () => {
+        const { countTotal } = this.state;
+
+        if (countTotal == 0) {
+            let field = 'pelo menos uma pessoa';
+
+            this.setState({ fieldNotFullfiled: field });
+            this.setModalVisible(true);
+            return;
+        }
+
+        const { navigation } = this.props;
+
+        navigation.navigate('Carnes');
+    }
     
     render() {
         const { 
@@ -113,9 +136,10 @@ export default class BarbecuePersons extends React.Component {
             countWomens,
             countChilds,
             countVegan,
-            countTotal
+            countTotal,
+            modalVisible,
+            fieldNotFullfiled
         } = this.state;
-        const { navigation } = this.props;
 
         return(
             <ImageBackground
@@ -124,6 +148,13 @@ export default class BarbecuePersons extends React.Component {
                 imageStyle={styles.image}
             >
                 <View style={styles.background}>
+                    <ModalDataInvalid
+                        animationType='slide'
+                        visible={modalVisible}
+                        onModalClose={this.setModalVisible}
+                        fieldNotFullfiled={fieldNotFullfiled}
+                    />
+
                     <View style={styles.containerSection}>
                         <Image 
                             //style={{width: '100%', height: '100%'}}
@@ -183,7 +214,7 @@ export default class BarbecuePersons extends React.Component {
                     <View style={styles.footerSection}>
                         <TouchableOpacityApp
                             text={strings.next}
-                            onPress={() => navigation.navigate('Carnes')}
+                            onPress={this.handleNextButton}
                         />
                     </View>
                 </View>
