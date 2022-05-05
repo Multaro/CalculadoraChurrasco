@@ -20,7 +20,7 @@ export default class App extends React.Component {
         barbecue_name: '',
         modalVisible: false,
         fieldNotFullfiled: '',
-        screenWidth: window.screen.width
+        //screenWidth: window.screen.width
     };
 
     setFieldNotFullfiled = (field) => {
@@ -137,7 +137,7 @@ export default class App extends React.Component {
                             nextTitle="Próximo"
                             selectMonthTitle={`Selecionar o Mês em `}
                             selectYearTitle="Selecionar o Ano"
-                            width={screenWidth - 50}
+                            width={350}
                             selectedDayColor={colors.red}
                             selectedDayTextColor='#fff'
                             dayShape='square'
