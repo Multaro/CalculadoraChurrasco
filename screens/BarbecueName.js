@@ -4,8 +4,6 @@ import {
     View,
     ImageBackground,
     TextInput,
-    ScrollView,
-    Dimensions
 } from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker/CalendarPicker';
 
@@ -199,7 +197,6 @@ const styles = StyleSheet.create({
     containerSection: {
         //marginTop: 60,
         flex: 1,
-        minHeight: Dimensions.height,
         justifyContent: 'space-around',
         alignItems: 'center',
         padding: 5
