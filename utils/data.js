@@ -13,27 +13,13 @@ class Data {
             children: 0,
             vegs: 0
         };
-        this.meats = [
-            {
-                label: '',
-                type: ''
-            }
-        ];
-        this.sideDishes = [
-            {
-                label: ''
-            }
-        ];
-        this.supplies = [
-            {
-                label: ''
-            }
-        ];
-        this.drinks = [
-            {
-                label: ''
-            }
-        ];
+        this.meats = [];
+
+        this.sideDishes = [];
+
+        this.supplies = [];
+
+        this.drinks = [];
     }
 
     getBarbecueName() {
