@@ -4,7 +4,10 @@ export default {
     mensIcon: require('../assets/men-icon.png'),
     womansIcon: require('../assets/woman-icon.png'),
     ChildsIcon: require('../assets/child-icon.png'),
-    GlassIcon: require('../assets/glass.png')
+    meatsIcon: require('../assets/meatsIcon.png'),
+    GlassIcon: require('../assets/glass.png'),
+    suppliesIcon: require('../assets/supplies.png'),
+    sideDishesIcon: require('../assets/sideDishes.png')
     //barbecueIcon: require('../assets/'),
     //mensIcon: require('../assets/'),
 };

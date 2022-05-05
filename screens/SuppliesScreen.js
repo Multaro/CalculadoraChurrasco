@@ -3,7 +3,8 @@ import {
     StyleSheet,
     ImageBackground,
     View,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 import colors from '../utils/colors';
@@ -61,6 +62,12 @@ export default class SuppliesScreen extends React.Component {
             >
                 <View style={styles.background}>
                     <View style={styles.container}>
+                        <Image
+                            style={{width: 60, height: 60}}
+                            source={images.suppliesIcon}
+                            imageStyle={styles.image}
+                            resizeMode='contain'
+                        /> 
                         <TextApp text={strings.supplies.title}/>
                         <Text style={styles.text}>{strings.supplies.text}</Text>
                     </View>

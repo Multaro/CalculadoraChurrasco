@@ -3,7 +3,8 @@ import {
     StyleSheet,
     View,
     ImageBackground,
-    Text
+    Text,
+    Image
 } from 'react-native';
 
 import CardsSelection from '../components/CardsSelection';
@@ -61,6 +62,12 @@ export default class SideDishesScreen extends React.Component {
             >
                 <View style={styles.background}>
                     <View style={styles.container}>
+                        <Image
+                            style={{width: 60, height: 60}}
+                            source={images.sideDishesIcon}
+                            imageStyle={styles.image}
+                            resizeMode='contain'
+                        /> 
                         <TextApp text={strings.sideDishes.title} /> 
                         <Text style={{color: colors.grey}}>{strings.sideDishes.text}</Text>
                     </View>
