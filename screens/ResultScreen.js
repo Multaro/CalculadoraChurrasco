@@ -15,12 +15,9 @@ import TouchableOpacityApp from '../components/TouchableOpacityApp';
 import images from '../utils/images';
 import colors from '../utils/colors';
 import strings from '../utils/strings';
+import data from '../utils/data';
+import { fetchBarbecue } from '../utils/api';
 import ItemList from '../components/ItemList';
-
-const DATA = [
-    {id: 'alcatra', value: '10kg'},
-    {id: 'Costela', value: '20kg'}
-]
 
 export default class Result extends React.Component {
     state = {
@@ -29,6 +26,48 @@ export default class Result extends React.Component {
         sideDishes: false,
         supplies: false,
         drinks: false
+    };
+
+    componentDidMount() {
+        const guests = data.guests;
+        const sideDishes = data.sideDishes.map(sideDishe => sideDishe.label);
+        const meats = data.meats.map(meat => meat.label);
+        const supplies = data.supplies.map(supplie => supplie.label);
+        const drinks = data.drinks.map(drink => drink.label);
+
+        const obj = {
+            convidados: guests,
+            meats,
+            sideDishes,
+            supplies,
+            drinks
+        };
+
+        this.handleBarbecue(obj);
+    }
+
+    handleBarbecue = async data => {
+
+        if (!data) return;
+
+        this.setState({ loading: true }, async () => {
+            try {
+                
+                const result = await fetchBarbecue(data);
+                console.log(result);
+                this.setState({
+                    loading: false,
+                    error: false,
+                });
+
+            } catch (e) {
+                console.log(e);
+                this.setState({
+                    loading: false,
+                    error: true
+                });
+            }
+        });
     };
 
     render() {
@@ -57,7 +96,7 @@ export default class Result extends React.Component {
                                 </Text>
                             )}
                             {!error && (
-                                <View style={styles.scrollView}>
+                                <ScrollView style={styles.scrollView}>
                                     <TextApp text='CONVIDADOS' />
                                     <View style={styles.scrollSection}>
                                         <View>
@@ -88,13 +127,6 @@ export default class Result extends React.Component {
                                         </View>
                                     </View>
                                     <TextApp text='Carnes e Vegetais' />
-                                    <FlatList 
-                                        nestedScrollEnabled
-                                        data={DATA}
-                                        renderItem={(id, value) => (
-                                            <ItemList id={id} value={value}/>
-                                        )}
-                                    />
                                     {sideDishes && (
                                         <View>
                                         {
@@ -119,13 +151,16 @@ export default class Result extends React.Component {
                                         </View>
                                     )}
 
-                                </View>
+                                </ScrollView>
                             )}
                         </View>
                     )}
 
                     <View style={styles.footerSection}>
-                        <TouchableOpacityApp text={strings.next} />
+                        <TouchableOpacityApp 
+                            text={strings.next}
+                            onPress={() => ''}
+                        />
                     </View>
                 </View>
             </ImageBackground>
@@ -167,7 +202,7 @@ const styles = StyleSheet.create({
         lineHeight: 20
     },
     scrollView: {
-        flex: 1,
+        width: '100%',
         backgroundColor: 'red'
     },
     scrollSection: {
