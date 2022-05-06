@@ -25,7 +25,7 @@ class Data {
     getBarbecueName() {
         if (this.event.name.length > 20) return this.event.name.substring(0, 19) + '...';
 
-        return this.event.name;
+        return this.event.name.toUpperCase();
     }
 
     setBarbecueName(name) {
