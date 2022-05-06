@@ -16,17 +16,32 @@ import TextApp from '../components/TextApp';
 import CardsSelection from '../components/CardsSelection';
 import CardsMeatsAndVegetables from '../components/CardsMeatsAndVegetables';
 import TouchableOpacityApp from '../components/TouchableOpacityApp';
+import ModalDataInvalid from '../components/ModalDataInvalid';
 
 export default class MeatsAndVegetables extends React.Component {
-    state = {
-        meats: {
-            beef: true,
-            pig: false,
-            sheep: false,
-            chicken: false,
-            vegetables: false
-        }
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            meats: {
+                beef: true,
+                pig: false,
+                sheep: false,
+                chicken: false,
+                vegetables: false
+            },
+            modalVisible: false,
+            fieldNotFullfiled: ''
+        }   
+    }
+
+    setFieldNotFullfiled = (field) => {
+        this.setState({ fieldNotFullfiled: field });
+    }
+
+    setModalVisible = (visible) => {
+        this.setState({ modalVisible: visible });
+    }
 
     handleMeat = (key) => {
 
@@ -78,6 +93,19 @@ export default class MeatsAndVegetables extends React.Component {
 
         data.meats = meats;
     }
+
+    handleNextStep = () => {
+        
+        if (!data.meats.length) {
+            this.setFieldNotFullfiled('pelo menos uma carne/vegetal');
+            this.setModalVisible(true);
+            return;
+        }
+        
+        const { navigation } = this.props;
+
+        navigation.navigate('Acompanhamentos');
+    }
     
     render() {
         const { 
@@ -87,7 +115,9 @@ export default class MeatsAndVegetables extends React.Component {
             chicken,
             vegetables
         } = this.state.meats;
-        const { navigation } = this.props;
+
+        const { modalVisible, fieldNotFullfiled } = this.state;
+
         const { meats } = strings;
 
         return (
@@ -99,6 +129,12 @@ export default class MeatsAndVegetables extends React.Component {
                 <View style={styles.background} 
                     onPress={this.handleSelectedButton}
                 >
+                    <ModalDataInvalid
+                        animationType='slide'
+                        visible={modalVisible}
+                        onModalClose={this.setModalVisible}
+                        fieldNotFullfiled={fieldNotFullfiled}
+                    />
                     
                     <TextApp text={meats.title}/>
                     
@@ -190,7 +226,7 @@ export default class MeatsAndVegetables extends React.Component {
                     <View style={styles.nextButton}>
                         <TouchableOpacityApp 
                             text={strings.next}
-                            onPress={() => navigation.navigate('Acompanhamentos')}
+                            onPress={this.handleNextStep}
                         />
                     </View>
                 </View>
