@@ -48,12 +48,12 @@ class Data {
     getEventDate() {
         let date = '';
 
-        const startMonth = strings.months.at(this.event.startDate.month())
+        const startMonth = strings.months.find((_, index) => this.event.startDate.month() === index);
         const startMonthAndYear = this.event.startDate.format(
             `[de] [${startMonth}] [de] YYYY`
         );
 
-        const endMonth = strings.months.at(this.event.endDate.month());
+        const endMonth = strings.months.find((_, index) => this.event.endDate.month() === index);
         const endMonthAndYear = this.event.endDate.format(
             `[de] [${endMonth}] [de] YYYY`
         )
