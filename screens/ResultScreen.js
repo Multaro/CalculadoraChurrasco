@@ -51,6 +51,16 @@ export default class Result extends React.Component {
         this.handleBarbecue(obj);
     }
 
+    newBarbecue = () => {
+        const { navigation } = this.props;
+
+        data.newBarbecue();
+
+        navigation.navigate('Churrasco', {
+            reseting: true
+        });
+    }
+
     handleBarbecue = async data => {
 
         if (!data) return;
@@ -253,9 +263,7 @@ export default class Result extends React.Component {
                         <View style={styles.footerSection}>
                             <TouchableOpacityApp 
                                 text={'INICIAR OUTRO CALCULO'}
-                                onPress={() => {
-                                    console.log(typeof(suppliesList))
-                                }}
+                                onPress={this.newBarbecue}
                             />
                         </View>
                    </View>

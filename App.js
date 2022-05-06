@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 
 import BarbecueName from './screens/BarbecueName';
 import BarbecuePersons from './screens/BarbecuePersons';
@@ -16,14 +17,21 @@ const Stack = createNativeStackNavigator();
 export default function App() {
     return (
         <NavigationContainer>
-            <Stack.Navigator>
+            <Stack.Navigator
+                screenOptions={{
+                    headerTitleAlign: 'center',
+                    headerTitleStyle: {
+                        fontWeight: 'bold'
+                    },
+                }}
+            >
                 <Stack.Screen name='Churrasco' component={BarbecueName} />
                 <Stack.Screen name='Pessoas' component={BarbecuePersons} />
                 <Stack.Screen name='Carnes' component={MeatsAndVegetables} />
                 <Stack.Screen name='Acompanhamentos' component={SideDishesScreen} />
                 <Stack.Screen name='Suprimentos' component={SuppliesScreen} />
                 <Stack.Screen name='Bebidas' component={DrinksScreen} />
-                <Stack.Screen name='Resultado' component={ResultScreen} />
+                <Stack.Screen name='Resultado' component={ResultScreen} options={{headerLeft: (props) => null}} />
             </Stack.Navigator>
         </NavigationContainer>
     );

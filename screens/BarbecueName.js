@@ -4,6 +4,7 @@ import {
     View,
     ImageBackground,
     TextInput,
+    Dimensions
 } from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker/CalendarPicker';
 
@@ -17,12 +18,21 @@ import data from '../utils/data';
 import strings from '../utils/strings';
 
 export default class App extends React.Component {
-    state = {
-        barbecue_name: '',
-        modalVisible: false,
-        fieldNotFullfiled: '',
-        //screenWidth: window.screen.width
-    };
+    constructor(props) {
+        super(props);
+
+        this.calendarRef = React.createRef();
+
+        this.state = {
+            barbecue_name: '',
+            modalVisible: false,
+            fieldNotFullfiled: '',
+            screenWidth: Dimensions.get('window').width,
+            dateChanged: false
+        }
+    }
+
+    textInput = '';
 
     setFieldNotFullfiled = (field) => {
         this.setState({ fieldNotFullfiled: field });
@@ -33,19 +43,38 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
+        const { navigation } = this.props;
+
+        navigation.addListener('focus', () => {
+            let reseting = this.props.route.params == undefined ? false : true;
+
+            if (this.props.route.params?.reseting) {
+                reseting = true;
+            }
+
+            if (reseting) {
+                this.calendarRef.current.resetSelections();
+                this.textInput.clear();
+                this.setState({
+                    barbecue_name: ''
+                });
+            }
+        })
+
         this.onDateChange = this.onDateChange.bind(this);
     }
 
     handleButton = () => {
         let field = '';
+        const { dateChanged } = this.state;
 
-        if (!this.state.barbecue_name || !data.event.endDate) {
-            if (!this.state.barbecue_name && !data.event.endDate) {
+        if (!this.state.barbecue_name || !data.event.endDate || !dateChanged) {
+            if (!this.state.barbecue_name && (!data.event.endDate || !dateChanged)) {
                 field = 'o nome e a data do churrasco';
             } else if (!this.state.barbecue_name) {
                 field = 'o nome do churrasco';  
-            } else if (!data.event.endDate) {
-                field = data.event.startDate
+            } else if (!data.event.endDate || !dateChanged) {
+                field = dateChanged
                     ? 'a data de término do churrasco'
                     : 'a data do churrasco';
             }
@@ -78,10 +107,14 @@ export default class App extends React.Component {
         }
 
         newText = newText.toUpperCase();
-        this.setState({barbecue_name : newText});
+        this.setState({barbecue_name : newText.toUpperCase()});
     }
 
     onDateChange = (date, type) => {
+        this.setState({
+            dateChanged: true
+        });
+
         if (type === 'END_DATE') {
             data.setEndDate(date);
         } else {
@@ -100,7 +133,7 @@ export default class App extends React.Component {
 
         const maxDate = new Date(2023, 12, 31);
 
-        return(
+        return (
             <ImageBackground
                 source={images.background}
                 style={styles.imageContainer}
@@ -119,13 +152,15 @@ export default class App extends React.Component {
                         <TextApp text='Primeiro dê um nome ao seu churrasco:'/>
                         <TextInput
                             style={styles.input}
-                            placeholder='Ex: churras em casa'
+                            placeholder={'Ex: churras em casa'}
                             onChangeText={this.handleBarbecueName}
                             maxLength={50}
+                            ref={input => { this.textInput = input }}
                         />
 
                         <TextApp text='Qual será a data?' />
                         <CalendarPicker
+                            ref={this.calendarRef}
                             allowRangeSelection={true}
                             minDate={new Date()}
                             maxDate={maxDate}
@@ -135,7 +170,7 @@ export default class App extends React.Component {
                             nextTitle="Próximo"
                             selectMonthTitle={`Selecionar o Mês em `}
                             selectYearTitle="Selecionar o Ano"
-                            width={350}
+                            width={screenWidth - 50}
                             selectedDayColor={colors.red}
                             selectedDayTextColor='#fff'
                             dayShape='square'
