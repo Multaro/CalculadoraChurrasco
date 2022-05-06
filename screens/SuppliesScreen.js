@@ -4,7 +4,8 @@ import {
     ImageBackground,
     View,
     Text,
-    Image
+    Image,
+    Dimensions
 } from 'react-native';
 
 import colors from '../utils/colors';
@@ -53,6 +54,7 @@ export default class SuppliesScreen extends React.Component {
 
     render() {
         const { navigation } = this.props;
+        const win = Dimensions.get('window');
 
         return(
             <ImageBackground
@@ -63,7 +65,12 @@ export default class SuppliesScreen extends React.Component {
                 <View style={styles.background}>
                     <View style={styles.container}>
                         <Image
-                            style={{width: 60, height: 60}}
+                            style={{
+                                width: win.width/5,
+                                height: win.width/5,
+                                resizeMode: "contain",
+                                alignSelf: "center"
+                            }}
                             source={images.suppliesIcon}
                             imageStyle={styles.image}
                             resizeMode='contain'

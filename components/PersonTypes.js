@@ -5,6 +5,7 @@ import {
     Text,
     TouchableOpacity,
     Image,
+    Dimensions
 } from 'react-native';
 
 import TextApp from './TextApp';
@@ -13,11 +14,20 @@ import colors from '../utils/colors';
 import images from '../utils/images';
 import PropTypes from 'prop-types';
 
+
+const win = Dimensions.get('window');
+
 export default function PersonTypes({type, onSum, onSub, count, typeIcon}) {
+    
     return (
         <View style={styles.container}>
             <Image 
-                //style={{width: '100%', height: '100%'}}
+                style={{
+                    width: win.width/5,
+                    height: win.width/5,
+                    resizeMode: "contain",
+                    alignSelf: "center",
+                }}
                 source={typeIcon} 
                 imageStyle={styles.Image}
             />

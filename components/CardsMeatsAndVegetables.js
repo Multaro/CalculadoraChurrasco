@@ -3,7 +3,8 @@ import {
     View,
     Text,
     Image,
-    StyleSheet
+    StyleSheet,
+    Dimensions
 } from 'react-native';
 
 export default function CardsMeatsAndVegetables ({ text, icon, selected }) {
@@ -32,20 +33,16 @@ const styles = StyleSheet.create({
         margin: '1%'
     },
     imageContainer: {
-        //flex: 1,
+        backgroundColor: 'pink',
         borderWidth: 1,
         borderColor: 'silver',
-        //width: '100%',
-        //height: '30%',
         alignItems: 'center',
         justifyContent: 'center',
         margin: '1%'
     },
     image: {
-//        flex: 1,
-        width: 60,
-        height: 60,
-  //      resizeMode: 'cover'
+        maxWidth: 100,
+        maxHeight: 100
     },
     label: {
         fontSize: 14,
