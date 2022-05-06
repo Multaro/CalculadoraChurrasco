@@ -223,13 +223,11 @@ const styles = StyleSheet.create({
     meatTypes: {
         marginVertical: '10%',
         flex: 1,
-        width: '100%',
         flexDirection: 'row',
         flexWrap: 'wrap',
         padding: '3%',
         justifyContent: 'center',
         alignItems: 'center',
-        //width: '40%',
     },
     nextButton: {
         flex: .1,

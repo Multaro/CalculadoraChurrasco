@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
         margin: '1%'
     },
     imageContainer: {
-        backgroundColor: 'pink',
         borderWidth: 1,
         borderColor: 'silver',
         alignItems: 'center',

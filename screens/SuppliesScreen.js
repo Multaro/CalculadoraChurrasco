@@ -107,18 +107,15 @@ const styles = StyleSheet.create({
         borderLeftColor: colors.red
 
     },
-    // Container tamanho da screen
     imageContainer: {
         flex: 1,
         backgroundColor: 'rgba(1, 1, 1, .1)',
         paddingHorizontal: 20
     },
     image: {
-        // Imagem tamanho da screen
         flex: 1,
         width: null,
         height: null,
-        // Redimensionar para cobrir a tela
         resizeMode: 'cover'
     },
     textSection: {
@@ -128,7 +125,7 @@ const styles = StyleSheet.create({
         justifyContent:'space-around'       
     },
     container: {
-        justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
         padding: '5%',
         flex: 1

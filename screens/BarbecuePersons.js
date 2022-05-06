@@ -4,7 +4,8 @@ import {
     StyleSheet,
     Text,
     ImageBackground,
-    Image
+    Image,
+    Dimensions
 } from 'react-native';
 
 import TextApp from '../components/TextApp';
@@ -140,6 +141,7 @@ export default class BarbecuePersons extends React.Component {
             modalVisible,
             fieldNotFullfiled
         } = this.state;
+        const win = Dimensions.get('window');
 
         return(
             <ImageBackground
@@ -157,7 +159,12 @@ export default class BarbecuePersons extends React.Component {
 
                     <View style={styles.containerSection}>
                         <Image 
-                            //style={{width: '100%', height: '100%'}}
+                            style={{
+                                width: win.width/5,
+                                height: win.width/5,
+                                resizeMode: "contain",
+                                alignSelf: "center",
+                            }}
                             source={images.reunionIcon}
                             imageStyle={styles.image}
                         />
@@ -239,13 +246,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(1, 1, 1, .1)',
         paddingHorizontal: 20,
     },
-    // Container tamanho da screen
     image: {
-        // Imagem tamanho da screen
         flex: 1,
         width: null,
         height: null,
-        // Redimensionar para cobrir a tela
         resizeMode: 'cover'
     },
     input: {
@@ -257,10 +261,9 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: '10%'
+        marginTop: '10%',
     },
     containerSection: {
-        //marginTop: 60,
         flex: 1,
         justifyContent: 'space-evenly',
         alignItems: 'center'
@@ -268,7 +271,7 @@ const styles = StyleSheet.create({
     footerSection: {
         flex: .1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'flex-end'
     }
 
 });

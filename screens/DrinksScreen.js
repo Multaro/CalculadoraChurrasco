@@ -4,7 +4,8 @@ import {
     View,
     ImageBackground,
     StyleSheet,
-    Image
+    Image,
+    Dimensions
 } from 'react-native';
 
 import TextApp from '../components/TextApp';
@@ -51,6 +52,7 @@ export default class DrinksScreen extends React.Component {
 
     render() {
         const { navigation } = this.props;
+        const win = Dimensions.get('window');
 
         return (
             <ImageBackground
@@ -61,10 +63,15 @@ export default class DrinksScreen extends React.Component {
                 <View style={styles.background}>
                     <View style={styles.containerSection}>
                         <Image
-                            style={{width: 60, height: 60}}
+                            style={{
+                                width: win.width/5,
+                                height: win.width/5,
+                                resizeMode: 'contain',
+                                alignSelf: 'center'
+
+                            }}
                             source={images.GlassIcon}
                             imageStyle={styles.image}
-                            resizeMode='contain'
                         />  
 
                         <TextApp text={strings.drinks.title}/>
@@ -91,7 +98,6 @@ export default class DrinksScreen extends React.Component {
 const styles = StyleSheet.create({
     background: {
         flex: 1,
-        alignItems: 'center',
         paddingVertical: 40,
         backgroundColor: '#fff',
         borderRightWidth: 2,
@@ -114,7 +120,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-evenly',
         alignItems: 'center',
-        padding: 5
+        padding: '5%'
     },
     text: {
         marginVertical: 1,

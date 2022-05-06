@@ -73,7 +73,6 @@ export default class SideDishesScreen extends React.Component {
                             }}
                             source={images.sideDishesIcon}
                             imageStyle={styles.image}
-                            resizeMode='contain'
                         /> 
                         <TextApp text={strings.sideDishes.title} /> 
                         <Text style={{color: colors.grey}}>{strings.sideDishes.text}</Text>
@@ -108,28 +107,19 @@ const styles = StyleSheet.create({
         borderRightColor: colors.red,
         borderLeftColor: colors.red
     },
-    // Container tamanho da screen
     imageContainer: {
         flex: 1,
         backgroundColor: 'rgba(1, 1, 1, .1)',
         paddingHorizontal: 20
     },
     image: {
-        // Imagem tamanho da screen
         flex: 1,
         width: null,
         height: null,
-        // Redimensionar para cobrir a tela
         resizeMode: 'cover'
     },
-    textSection: {
-        padding: '5%',
-        marginVertical: '10%',
-        alignItems: 'center',
-        justifyContent:'space-around'       
-    },
     container: {
-        justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
         padding: '5%',
         flex: 1
