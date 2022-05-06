@@ -63,7 +63,7 @@ class Data {
                 if (this.event.startDate.get('date') === this.event.endDate.get('date')) {
                     date = `${this.event.startDate.format('D')} ${startMonthAndYear}`;
                 } else {
-                    date = `${this.event.startDate.format('D [à]')} ${this.event.endDate.day()} ${startMonthAndYear}`;
+                    date = `${this.event.startDate.format('D [à]')} ${this.event.endDate.get('date')} ${startMonthAndYear}`;
                 }
             } else {
                 date = `${this.event.startDate.format(`D [de] [${startMonth}]`)} à ${this.event.endDate.format(`D [de] [${endMonth}]`)} de ${this.event.startDate.get('year')}
@@ -228,6 +228,27 @@ class Data {
         });
 
         return drinks;
+    }
+
+    newBarbecue() {
+        this.event = {
+            name: '',
+            startDate: moment(),
+            endDate: moment()
+        };
+        this.guests = {
+            men: 0,
+            women: 0,
+            children: 0,
+            vegs: 0
+        };
+        this.meats = [];
+
+        this.sideDishes = [];
+
+        this.supplies = [];
+
+        this.drinks = [];
     }
 }
 
