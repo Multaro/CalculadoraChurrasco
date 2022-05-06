@@ -4,7 +4,7 @@ import {
     ImageBackground,
     StyleSheet,
     TouchableOpacity,
-    Text
+    Text,
 } from 'react-native';
 
 import images from '../utils/images';
@@ -150,7 +150,7 @@ export default class MeatsAndVegetables extends React.Component {
                                 icon={meats.vegetables.icon} />
                         </TouchableOpacity>
                     </View>
-
+                    <View style={{flex: 1}}>
                     { beef && (
                         <CardsSelection
                             texts={data.generateBeefs()}
@@ -185,6 +185,7 @@ export default class MeatsAndVegetables extends React.Component {
                             onSelect={this.addMeat}
                             onUnselect={this.removeMeat}/>
                     )}
+                        </View>
 
                     <View style={styles.nextButton}>
                         <TouchableOpacityApp 
@@ -201,8 +202,7 @@ export default class MeatsAndVegetables extends React.Component {
 const styles = StyleSheet.create({
     background: {
         flex: 1,
-        alignItems: 'center',
-        paddingVertical: 40,
+        paddingVertical: 10,
         backgroundColor: '#fff',
         borderRightWidth: 2,
         borderLeftWidth: 2,
