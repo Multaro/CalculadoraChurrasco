@@ -10,8 +10,8 @@ import colors from '../utils/colors';
 export default function ItemList({ id, value }) {
     return(
         <View style={styles.container}>
-            <Text style={id}>ALCATRA</Text>
-            <Text style={value}>0.05KG</Text>
+            <Text style={styles.text}>{id}</Text>
+            <Text style={styles.text}>{value}</Text>
         </View>
     );
 }
@@ -23,6 +23,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '2%',
+        borderBottomWidth: 1,
+        marginBottom: 8,
+        borderBottomColor: 'rgba(117, 117, 177, .1)'
+
     },
     text: {
         marginVertical: 1,

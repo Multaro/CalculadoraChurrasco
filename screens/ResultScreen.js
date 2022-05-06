@@ -6,7 +6,8 @@ import {
     Text,
     ScrollView,
     StyleSheet,
-    FlatList
+    ActivityIndicator,
+    StatusBar
 } from 'react-native';
 
 import TextApp from '../components/TextApp';
@@ -25,7 +26,11 @@ export default class Result extends React.Component {
         error: false,
         sideDishes: false,
         supplies: false,
-        drinks: false
+        drinks: false,
+        meatsList: {},
+        sideDishesList: {},
+        suppliesList: {},
+        drinksList: {}
     };
 
     componentDidMount() {
@@ -54,14 +59,24 @@ export default class Result extends React.Component {
             try {
                 
                 const result = await fetchBarbecue(data);
-                console.log(result);
+                const sideDishes = (!data.sideDishes.length == 0) ? true: false;
+                const supplies = (!data.supplies.length == 0) ? true: false;
+                const drinks = (!data.drinks.length == 0) ? true: false;
+
+
                 this.setState({
                     loading: false,
                     error: false,
+                    sideDishes,
+                    supplies,
+                    drinks,
+                    meatsList: result.meats,
+                    sideDishesList: result.sideDishes,
+                    suppliesList: result.supplies,
+                    drinksList: result.drinks
                 });
 
             } catch (e) {
-                console.log(e);
                 this.setState({
                     loading: false,
                     error: true
@@ -76,18 +91,38 @@ export default class Result extends React.Component {
             error,
             sideDishes,
             supplies,
-            drinks
+            drinks,
+            meatsList,
+            sideDishesList,
+            suppliesList,
+            drinksList
         } = this.state;
 
         return(
-            <ImageBackground
-                source={images.background}
-                style={styles.imageContainer}
-                imageStyle={styles.image}
-            >
-                <View style={styles.background}>
-                    {!loading && (
+            <View style={{flex: 1}}>
+                {loading && (
+                    <View style={{
+                        flex: 1,
+                        alignItems: 'center',
+                        justifyContent: 'center'}}>
+                        <ActivityIndicator
+                            animating={loading}
+                            size='large'
+                            color={colors.red}
+                        />
+                    </View>
+                )}
+
+            {!loading && (
+                <ImageBackground
+                    source={images.background}
+                    style={styles.imageContainer}
+                    imageStyle={styles.image}
+                >
+                    <View style={styles.background}>
                         <View style={styles.containerSection}>
+                            <TextApp text={`${data.getBarbecueName()}`} />
+                            <TextApp text='COLOCA A DATA AQUI' />
                             <TextApp text={strings.result.title} />
                             {error && (
                                 <Text>
@@ -105,16 +140,15 @@ export default class Result extends React.Component {
                                                 imageStyle={styles.image}
                                                 resizeMode='contain'
                                             />
-                                            <TextApp text='00' />
+                                            <TextApp text={`${data.guests.men}`} />
                                         </View>
 
                                         <View>
                                             <Image
                                                 source={images.womansIcon}
                                                 imageStyle={styles.image}
-                                                resizeMode='contain'
                                             />
-                                            <TextApp text='00' />
+                                            <TextApp text={`${data.guests.women}`} />
                                         </View>
 
                                         <View>
@@ -123,47 +157,111 @@ export default class Result extends React.Component {
                                                 imageStyle={styles.image}
                                                 resizeMode='contain'
                                             />
-                                            <TextApp text='00' />
+                                            <TextApp text={`${data.guests.children}`} />
                                         </View>
                                     </View>
+                                    <View style={{alignItems: 'center'}}>
+                                        <Image
+                                            source={images.meatsIcon}
+                                            imageStyle={styles.image}
+                                            resizeMode='contain'
+                                        />
+                                    </View>
                                     <TextApp text='Carnes e Vegetais' />
+                                    {Object.keys(meatsList).map(item => {
+                                        return(
+                                            <ItemList 
+                                                key={item}
+                                                id={item}
+                                                value={meatsList[item]}
+                                            />
+                                        );
+                                    })}
+
                                     {sideDishes && (
                                         <View>
-                                        {
-                                            // FLAT LIST
-                                        }  
+                                            <View style={{alignItems: 'center'}}>
+                                                <Image
+                                                    source={images.sideDishesIcon}
+                                                    imageStyle={styles.image}
+                                                    resizeMode='contain'
+                                                />
+                                            </View>
+
+                                            <TextApp text='Acompanhamentos' />
+                                            {Object.keys(sideDishesList).map(item => {
+                                                return(
+                                                    <ItemList 
+                                                        key={item}
+                                                        id={item}
+                                                        value={sideDishesList[item]}
+                                                    />
+                                                );
+                                            })}
                                         </View>
                                     )}
 
                                     {supplies && (
                                         <View>
-                                        {
-                                            // FLAT LIST
-                                        }  
+                                            <View style={{alignItems: 'center'}}>
+                                                <Image
+                                                    source={images.suppliesIcon}
+                                                    imageStyle={styles.image}
+                                                    resizeMode='contain'
+                                                />
+                                            </View>
+
+                                            <TextApp text='Suprimentos' />
+                                            {Object.keys(suppliesList).map(item => {
+                                                return(
+                                                    <ItemList 
+                                                        key={item}
+                                                        id={item}
+                                                        value={suppliesList[item]}
+                                                    />
+                                                );
+                                            })}  
                                         </View>
                                     )}
 
                                     {drinks && (
                                         <View>
-                                        {
-                                            // FLAT LIST
-                                        }  
+                                            <View style={{alignItems: 'center'}}>
+                                                <Image
+                                                    source={images.GlassIcon}
+                                                    imageStyle={styles.image}
+                                                    resizeMode='contain'
+                                                />
+                                            </View>
+                                            <TextApp text='Bebidas' />
+                                            {Object.keys(drinksList).map(item => {
+                                                return(
+                                                    <ItemList 
+                                                        key={item}
+                                                        id={item}
+                                                        value={drinksList[item]}
+                                                    />
+                                                );
+                                            })}  
                                         </View>
                                     )}
 
                                 </ScrollView>
                             )}
                         </View>
-                    )}
 
-                    <View style={styles.footerSection}>
-                        <TouchableOpacityApp 
-                            text={strings.next}
-                            onPress={() => ''}
-                        />
-                    </View>
-                </View>
-            </ImageBackground>
+                        <View style={styles.footerSection}>
+                            <TouchableOpacityApp 
+                                text={'INICIAR OUTRO CALCULO'}
+                                onPress={() => {
+                                    console.log(typeof(suppliesList))
+                                }}
+                            />
+                        </View>
+                   </View>
+                </ImageBackground>
+            )}
+            </View>
         );
     }
 }
@@ -188,13 +286,12 @@ const styles = StyleSheet.create({
         flex: 1,
         width: null,
         height: null,
-        resizeMode: 'cover'
+        resizeMode: 'cover',
     },
     containerSection: {
         flex: 1,
         justifyContent: 'space-evenly',
         alignItems: 'center',
-        backgroundColor: 'pink',
         padding: 5
     },
     text: {
@@ -203,11 +300,9 @@ const styles = StyleSheet.create({
     },
     scrollView: {
         width: '100%',
-        backgroundColor: 'red'
     },
     scrollSection: {
         flexDirection: 'row',
-        backgroundColor: 'blue',
         justifyContent: 'center'
     },
     footerSection: {

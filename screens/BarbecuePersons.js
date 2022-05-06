@@ -207,7 +207,8 @@ export default class BarbecuePersons extends React.Component {
                                     {`Selecione até ${countTotal} pessoas`}
                                 </Text>
                             </View>
-                            <View style={{flex: .7}}>
+                            <View style={{
+                                flex: 1}}>
                                 <PersonTypes
                                     type=''
                                     onSum={this.handleSumButtonVegan}
@@ -261,17 +262,17 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: '10%',
+        marginTop: '20%',
     },
     containerSection: {
         flex: 1,
-        justifyContent: 'space-evenly',
+        //justifyContent: 'space-evenly',
         alignItems: 'center'
     },
     footerSection: {
         flex: .1,
         alignItems: 'center',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-start'
     }
 
 });
