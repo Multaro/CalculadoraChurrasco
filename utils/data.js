@@ -1,11 +1,12 @@
 import strings from './strings';
+import moment from 'moment';
 
 class Data {
     constructor() {
         this.event = {
             name: '',
-            startDate: '',
-            endDate: ''
+            startDate: moment(),
+            endDate: moment()
         };
         this.guests = {
             men: 0,
@@ -37,15 +38,42 @@ class Data {
     setStartDate(date) {
         if (date == null) return;
 
-        this.event.startDate = date.calendar();
+        this.event.startDate = date;
     }
 
     setEndDate(date) {
-        this.event.endDate = date == null ? null : date.calendar();
+        this.event.endDate = date == null ? null : date;
     }
 
     getEventDate() {
+        let date = '';
 
+        const startMonth = strings.months.at(this.event.startDate.month())
+        const startMonthAndYear = this.event.startDate.format(
+            `[de] [${startMonth}] [de] YYYY`
+        );
+
+        const endMonth = strings.months.at(this.event.endDate.month());
+        const endMonthAndYear = this.event.endDate.format(
+            `[de] [${endMonth}] [de] YYYY`
+        )
+
+        if (this.event.startDate.get('year') === this.event.endDate.get('year')) {
+            if (this.event.startDate.get('month') === this.event.endDate.get('month')) {
+                if (this.event.startDate.get('date') === this.event.endDate.get('date')) {
+                    date = `${this.event.startDate.format('D')} ${startMonthAndYear}`;
+                } else {
+                    date = `${this.event.startDate.format('D [à]')} ${this.event.endDate.day()} ${startMonthAndYear}`;
+                }
+            } else {
+                date = `${this.event.startDate.format(`D [de] [${startMonth}]`)} à ${this.event.endDate.format(`D [de] [${endMonth}]`)} de ${this.event.startDate.get('year')}
+                `;
+            }
+        } else {
+            date = `${this.event.startDate.get('date')} ${startMonthAndYear} à ${this.event.startDate.get('date')} ${endMonthAndYear}`;
+        }
+
+        return date;
     }
 
     addMen() {

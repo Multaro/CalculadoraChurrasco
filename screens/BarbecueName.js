@@ -14,6 +14,7 @@ import ModalDataInvalid from '../components/ModalDataInvalid';
 import colors from '../utils/colors';
 import images from '../utils/images';
 import data from '../utils/data';
+import strings from '../utils/strings';
 
 export default class App extends React.Component {
     state = {
@@ -128,11 +129,8 @@ export default class App extends React.Component {
                             allowRangeSelection={true}
                             minDate={new Date()}
                             maxDate={maxDate}
-                            weekdays={['Seg', 'Ter', 'Qua', 'Qui',
-                            'Sex', 'Sab', 'Dom']}
-                            months={['Janeiro', 'Fevereiro', 'Março', 'Abril',
-                            'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro',
-                            'Outubro', 'Novembro', 'Dezembro']}
+                            weekdays={strings.weeks}
+                            months={strings.months}
                             previousTitle="Anterior"
                             nextTitle="Próximo"
                             selectMonthTitle={`Selecionar o Mês em `}

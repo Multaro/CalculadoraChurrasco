@@ -122,7 +122,7 @@ export default class Result extends React.Component {
                     <View style={styles.background}>
                         <View style={styles.containerSection}>
                             <TextApp text={`${data.getBarbecueName()}`} />
-                            <TextApp text='COLOCA A DATA AQUI' />
+                            <TextApp text={data.getEventDate()} />
                             <TextApp text={strings.result.title} />
                             {error && (
                                 <Text>

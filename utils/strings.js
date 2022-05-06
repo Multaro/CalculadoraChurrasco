@@ -1,4 +1,27 @@
 export default {
+    months: [
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho',
+        'Julho',
+        'Agosto',
+        'Setembro',
+        'Outubro',
+        'Novembro',
+        'Dezembro'
+    ],
+    weeks: [
+        'Seg',
+        'Ter',
+        'Qua',
+        'Qui',
+        'Sex',
+        'Sab',
+        'Dom'
+    ],
     meats: {
         title: 'QUAIS CARNES E VEGETAIS SERÃO SERVIDOS?',
         beef: {
